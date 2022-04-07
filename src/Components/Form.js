@@ -76,12 +76,47 @@ class Form extends Component{
         pubKey: '',
         secKey: '',
         csv: {},
-        selectedFile: null
+        selectedFile: ''
     }
+
+    // const handleChange = (event) => {
+    //     // setformValue({
+    //     //   ...formValue,
+    //     //   [event.target.name]: event.target.value
+    //     // });
+    // } 
+
+    onFileChange = event => {
+    
+        // Update the state
+        this.setState({ selectedFile: event.target.files[0] });
+      
+    };
+
+    onFileUpload = () => {
+    
+        // Create an object of formData
+        const formData = new FormData();
+      
+        // Update the formData object
+        formData.append(
+          "myFile",
+          this.state.selectedFile,
+          this.state.selectedFile.name
+        );
+      
+        // Details of the uploaded file
+        console.log(this.state.selectedFile);
+      
+        // Request made to the backend api
+        // Send formData object
+        //axios.post("api/uploadfile", formData);
+    };
 
     render(){
         return(
-            <form onSubmit={handleSubmit}>
+            <form>
+                {/* onSubmit={handleSubmit} */}
       <p>Upload Form</p>
       <input
         type="input"
@@ -97,8 +132,16 @@ class Form extends Component{
         value={this.state.secKey}
         onChange={handleChange}
       />
+      <input
+        type="file"
+        name="csv"
+        placeholder="upload your csv file"
+        value={this.state.selectedFile}
+        onChange={handleChange}
+      />
       <button
         type="submit"
+        onClick={this.onFileUpload}
       >
         Submit
       </button>
