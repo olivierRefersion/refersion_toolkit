@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { Component } from "react";
 import { sendManualOrders } from "../functions";
 import { useState } from "react";
-const csvtojson=require('csvtojson');
+import { readRemoteFile  } from 'react-papaparse'
+import Papa from 'papaparse';
+
 const csvFilePath='test.csv'
 
 export default class Form extends React.Component {
@@ -35,11 +37,13 @@ export default class Form extends React.Component {
        //       console.log(res.data);
        //     })
        //   console.log(this.state.selectedFile)
-       csvtojson()
-           .fromFile(this.state.selectedFile)
-           .then((jsonObj)=>{
-               console.log("File Accepted")
-           })
+       Papa.parse(this.state.selectedFile,
+
+            {complete: function(results){
+                console.log("Finished", results.data)
+            }
+            })
+           
     }
   
     render() {
