@@ -9,7 +9,8 @@ const csvFilePath='test.csv'
 
 export default class Form extends React.Component {
     state = {
-      name: '',
+      pubKey: '',
+      secKey:'',
       selectedFile: null
     }
   
@@ -39,10 +40,15 @@ export default class Form extends React.Component {
        //   console.log(this.state.selectedFile)
        Papa.parse(this.state.selectedFile,
 
-            {complete: function(results){
-                console.log("Finished", results.data)
+            {header:true,
+                complete: function(results){
+                console.log("Finished", results.data);
+                console.log(typeof(results.data));
+                const dataReadyToBeSent = JSON.stringify(results.data);
+                console.log(typeof(dataReadyToBeSent));
             }
-            })
+            });
+            
            
     }
   
@@ -52,7 +58,11 @@ export default class Form extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               Public Key
-              <input type="text" name="name" onChange={this.handleChange} />
+              <input type="text" name="pubKey" onChange={this.handleChange} />
+            </label>
+            <label>
+              Secret Key
+              <input type="text" name="secKey" onChange={this.handleChange} />
             </label>
             <input type="file" onChange={this.onFileChange}/>
             <button type="submit">Add</button>
