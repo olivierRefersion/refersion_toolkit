@@ -11,7 +11,8 @@ export default class Form extends React.Component {
   state = {
     pubKey: null,
     secKey: null,
-    selectedFile: null
+    selectedFile: null,
+    json: null
   }
 
   handleChange = event => {
@@ -39,8 +40,8 @@ export default class Form extends React.Component {
       secKey: this.state.secKey,
     };
 
-    console.log(this.state.pubKey);
-    console.log(this.state.secKey);
+    // console.log(this.state.pubKey);
+    // console.log(this.state.secKey);
 
     //   axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
     //     .then(res => {
@@ -48,17 +49,39 @@ export default class Form extends React.Component {
     //       console.log(res.data);
     //     })
     //   console.log(this.state.selectedFile)
-    const csvConfig = {
-      header: true,
-      complete: function (results) {
-        // console.log("Finished", results.data);
-        // console.log(typeof(results.data));
-        const dataReadyToBeSent = JSON.stringify(results.data);
-        console.log(dataReadyToBeSent);
-        console.log({ pubKey: this.state.pubKey });
-        // console.log(this.state.secKey);
+    // const csvConfig = {
+    //   header: true,
+    //   complete: function (results) {
+    //     // console.log("Finished", results.data);
+    //     // console.log(typeof(results.data));
+    //     const dataReadyToBeSent = JSON.stringify(results.data);
+    //     console.log(dataReadyToBeSent);
+    //     console.log({ pubKey: this.state.pubKey });
+    //     // console.log(this.state.secKey);
 
-        // for (let i = 0; i < dataReadyToBeSent.length; i++) {
+        
+    //   }
+    
+    // };
+    console.log(this.state.selectedFile);
+    const objectData = CSV.parse(this.state.selectedFile, {complete: (results) => {
+      this.setState({json: results.data})
+      //console.log("Finished:", results.data);
+    }});
+    setTimeout( () => {
+      
+      console.log(this.state.json);
+      console.log(this.state.pubKey);
+      console.log(this.state.secKey);
+    
+    }, 3000
+
+    //I need a Promise I think.
+      
+    );
+    console.log(this.state.pubKey);
+    console.log(this.state.secKey);
+    // for (let i = 0; i < dataReadyToBeSent.length; i++) {
         //     // console.log(dataReadyToBeSent[0].Order_ID);
         //     // console.log(dataReadyToBeSent[0].Affiliate_ID);
         //     // console.log(dataReadyToBeSent[0].Status);
@@ -92,11 +115,6 @@ export default class Form extends React.Component {
         //             // console.log(error);
         //         });
         // };
-      }
-    
-    };
-
-    CSV.parse(this.state.selectedFile,csvConfig);
 
 
   }
