@@ -2,75 +2,124 @@ import axios from "axios";
 import React, { Component } from "react";
 import { sendManualOrders } from "../functions";
 import { useState } from "react";
-import { readRemoteFile  } from 'react-papaparse'
-import Papa from 'papaparse';
+import { readRemoteFile } from 'react-papaparse'
+import CSV from 'papaparse';
 
-const csvFilePath='test.csv'
+const csvFilePath = 'test.csv'
 
 export default class Form extends React.Component {
-    state = {
-      pubKey: '',
-      secKey:'',
-      selectedFile: null
-    }
-  
-    handleChange = event => {
-      this.setState({ name: event.target.value });
-    }
-
-    onFileChange = event => {
-    
-        // Update the state
-        this.setState({ selectedFile: event.target.files[0] });
-      
-    };
-  
-    handleSubmit = event => {
-      event.preventDefault();
-  
-      const user = {
-        name: this.state.name
-      };
-  
-       //   axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
-       //     .then(res => {
-       //       console.log(res);
-       //       console.log(res.data);
-       //     })
-       //   console.log(this.state.selectedFile)
-       Papa.parse(this.state.selectedFile,
-
-            {header:true,
-                complete: function(results){
-                console.log("Finished", results.data);
-                console.log(typeof(results.data));
-                const dataReadyToBeSent = JSON.stringify(results.data);
-                console.log(typeof(dataReadyToBeSent));
-            }
-            });
-            
-           
-    }
-  
-    render() {
-      return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Public Key
-              <input type="text" name="pubKey" onChange={this.handleChange} />
-            </label>
-            <label>
-              Secret Key
-              <input type="text" name="secKey" onChange={this.handleChange} />
-            </label>
-            <input type="file" onChange={this.onFileChange}/>
-            <button type="submit">Add</button>
-          </form>
-        </div>
-      )
-    }
+  state = {
+    pubKey: null,
+    secKey: null,
+    selectedFile: null
   }
+
+  handleChange = event => {
+    //this.setState({ name: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+
+  onFileChange = event => {
+
+    // Update the state
+    this.setState({ selectedFile: event.target.files[0] });
+
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    // const user = {
+    //   name: this.state.name
+    // };
+
+    const formAuthentication = {
+      pubKey: this.state.pubKey,
+      secKey: this.state.secKey,
+    };
+
+    console.log(this.state.pubKey);
+    console.log(this.state.secKey);
+
+    //   axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+    //     .then(res => {
+    //       console.log(res);
+    //       console.log(res.data);
+    //     })
+    //   console.log(this.state.selectedFile)
+    const csvConfig = {
+      header: true,
+      complete: function (results) {
+        // console.log("Finished", results.data);
+        // console.log(typeof(results.data));
+        const dataReadyToBeSent = JSON.stringify(results.data);
+        console.log(dataReadyToBeSent);
+        console.log({ pubKey: this.state.pubKey });
+        // console.log(this.state.secKey);
+
+        // for (let i = 0; i < dataReadyToBeSent.length; i++) {
+        //     // console.log(dataReadyToBeSent[0].Order_ID);
+        //     // console.log(dataReadyToBeSent[0].Affiliate_ID);
+        //     // console.log(dataReadyToBeSent[0].Status);
+        //     // console.log(dataReadyToBeSent[0].Notes);
+        //     let order_id = dataReadyToBeSent[i].order_id; 
+        //     let id =  dataReadyToBeSent[i].affiliate_id;
+        //     let status = dataReadyToBeSent[i].status;
+        //     let notes = dataReadyToBeSent[i].notes;
+        //     axios({
+        //         method: 'post',
+        //         url: 'https://www.refersion.com/api/manual_credit_order_id',
+        //         headers: {
+        //             "Refersion-Public-Key": this.state.pubKey,
+        //             "Refersion-Secret-Key": this.state.secKey,
+        //             "Content-Type": "application/json"
+        //         },
+        //         data: {
+        //             order_id,
+        //             id,
+        //             status,
+        //             notes
+        //         }   
+        //         })
+        //         .then(function (response) {
+        //         // handle success
+        //         console.log(`For ${order_id} the Post is ${response.statusText}. ${response.data.message}`);
+        //         })
+        //         .catch(function (error) {
+
+        //             console.log(`For ${order_id}, ${error.response.data.error}`);
+        //             // console.log(error);
+        //         });
+        // };
+      }
+    
+    };
+
+    CSV.parse(this.state.selectedFile,csvConfig);
+
+
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Public Key
+            <input type="text" name="pubKey" onChange={this.handleChange} />
+          </label>
+          <label>
+            Secret Key
+            <input type="text" name="secKey" onChange={this.handleChange} />
+          </label>
+          <input type="file" onChange={this.onFileChange.bind(this)} />
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    )
+  }
+}
 
 
 
@@ -113,17 +162,17 @@ export default class Form extends React.Component {
 //     // }
 //     csvtojson()
 //     .fromFile(csvFilePath)
-//     .then((jsonObj)=>{
-//     // console.log(jsonObj);
-//     for (let i = 0; i < jsonObj.length; i++) {
-//         // console.log(jsonObj[0].Order_ID);
-//         // console.log(jsonObj[0].Affiliate_ID);
-//         // console.log(jsonObj[0].Status);
-//         // console.log(jsonObj[0].Notes);
-//         let order_id = jsonObj[i].order_id; 
-//         let id =  jsonObj[i].affiliate_id;
-//         let status = jsonObj[i].status;
-//         let notes = jsonObj[i].notes;
+//     .then((dataReadyToBeSent)=>{
+//     // console.log(dataReadyToBeSent);
+//     for (let i = 0; i < dataReadyToBeSent.length; i++) {
+//         // console.log(dataReadyToBeSent[0].Order_ID);
+//         // console.log(dataReadyToBeSent[0].Affiliate_ID);
+//         // console.log(dataReadyToBeSent[0].Status);
+//         // console.log(dataReadyToBeSent[0].Notes);
+//         let order_id = dataReadyToBeSent[i].order_id; 
+//         let id =  dataReadyToBeSent[i].affiliate_id;
+//         let status = dataReadyToBeSent[i].status;
+//         let notes = dataReadyToBeSent[i].notes;
 //         axios({
 //             method: 'post',
 //             url: 'https://www.refersion.com/api/manual_credit_order_id',
