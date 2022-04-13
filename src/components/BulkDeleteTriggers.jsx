@@ -4,7 +4,7 @@ export default function BulkDeleteTriggers() {
     return (
         <main>
             <div className="container">
-                <Alert type='info' text='something'/>
+                <Alert type='info'>Something related to bulk deleting triggers</Alert>
             </div>
         </main>
     

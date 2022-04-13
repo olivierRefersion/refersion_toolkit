@@ -1,12 +1,21 @@
+import { React, useState } from 'react';
 import { Header } from '../stories/Header';
 import { Outlet, useLocation } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { Icon } from '../stories/Icon';
 import logoIcon from '../assets/refersion-icon-white.svg'
+import { Modal } from '../stories/Modal';
 
 export default function Layout() {
 
-    let loggedIn = localStorage.getItem('loggedin');
+    // Handles toggling the auth modal visibility
+    const [modalVisibility, setModalVisibility] = useState(false);
+    const toggleModal = () => setModalVisibility(!modalVisibility);
+    const closeModal = () => setModalVisibility(false);
+    const toggleModalClassName = modalVisibility ? "show" : "hide";
+
+    // Temporary until some auth logic is in place
+    let loggedIn = localStorage.getItem('loggedin') !== null ? localStorage.getItem('loggedin') : false;
 
     // Maps location pathname to header title text
     const titleMap = {
@@ -36,6 +45,7 @@ export default function Layout() {
         }
     }
 
+    // TODO: Add logic for toggling the full menu
     const toggleMenu = () => {
         console.log('clicked')
     };
@@ -47,9 +57,11 @@ export default function Layout() {
                 title={titleMap[location.pathname].title}
                 icon={titleMap[location.pathname].icon}
                 loggedIn={loggedIn}
+                toggleModal={toggleModal}
             />
             <aside>
                 <span id="toggle" onClick={toggleMenu}><img src={logoIcon}></img></span>
+                {/* TODO: and add tooltips to icon-based menu */}
                 <ul>
                     <li>
                         <Link to="/">
@@ -84,6 +96,9 @@ export default function Layout() {
                 </ul>
             </aside>
             <Outlet />
+            <Modal className={toggleModalClassName} close={closeModal} title='Modal'>
+                <p>Modal</p>
+            </Modal>
         </>
     );
 }
