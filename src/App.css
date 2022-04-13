@@ -56,22 +56,58 @@ blockquote.info span.material-icons-outlined {
 
 a {
   font-weight: bold;
-  color: inherit;
-  border-bottom: 1px dotted;
+  color: var(--rfsn-green);
   text-decoration: none;
 }
 
 .container {
   margin: 0 auto;
   max-width: 70%;
-  padding: 30px;
 }
+
+main {
+  padding: 20px 0;
+}
+
+/* sidebar */
 
 aside {
   position: absolute;
   top: 0;
+  min-width: 75px;
+  max-width: 75px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  height: 100vh;
 }
-main {
-  padding: 40px;
-  margin-left: 80px;
+
+aside ul {
+  padding: 40px 0;
+  margin: 0;
+  list-style: none;
+}
+
+aside ul li {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+aside ul li a {
+  display: flex;
+  align-items: center;
+}
+
+aside ul li a span {
+  display: none;
+}
+
+#toggle {
+  background: var(--rfsn-dark-blue);
+  display: block;
+  padding: 18px 18px 19px 18px;
+}
+
+#toggle img {
+  max-width: 35px;
 }

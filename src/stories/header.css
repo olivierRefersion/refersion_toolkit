@@ -1,10 +1,7 @@
-.wrapper {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
+.grid {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 svg {
@@ -36,10 +33,11 @@ header h1 {
   align-items: center;
 }
 
-header h1 > span {
+header h1 > span:not(.material-icons-outlined) {
   margin-left: 10px;
 }
 
 header {
-  margin-left: 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
 }

@@ -3,7 +3,7 @@ import { Header } from './Header';
 import { MemoryRouter as Router } from 'react-router-dom';
 
 export default {
-  title: 'Example/Header',
+  title: 'Layouts/Header',
   component: Header,
   parameters: {
     layout: 'fullscreen',

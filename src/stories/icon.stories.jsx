@@ -1,13 +1,13 @@
 import React from 'react';
-import { Icon } from './icon';
+import { Icon } from './Icon';
 
 export default {
-    title: 'Example/Icon',
+    title: 'Components/Icons',
     component: Icon,
     decorators: [
         (Story) => (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
-                <Story />
+                {Story()}
             </div>
         ),
     ],

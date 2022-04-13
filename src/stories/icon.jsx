@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './icon.css';
+import './Icon.css';
 
 /**
  * Icons for menu items, buttons and more (using Google Material Icons: https://fonts.google.com/icons?icon.style=Outlined)

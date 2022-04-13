@@ -2,12 +2,12 @@ import React from 'react';
 import { Button } from './Button';
 
 export default {
-  title: 'Example/Button',
+  title: 'Components/Buttons',
   component: Button,
   decorators: [
     (Story) => (
-      <div style={{ display: 'flex', justifyContent: 'center' , alignItems: 'center', minHeight: '50vh'}}>
-        <Story />
+      <div style={{ display: 'flex', justifyContent: 'center' , alignItems: 'center', minHeight: '30vh'}}>
+        {Story()}
       </div>
     ),
   ],
@@ -67,4 +67,13 @@ export const ErrorOutlined = Template.bind({});
 ErrorOutlined.args = {
   ...defaultArgs,
   classes: 'outlined error',
+};
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  ...defaultArgs,
+  classes: 'primary with-icon',
+  withIcon: true,
+  icon: 'lock',
+  label: 'Authorize'
 };

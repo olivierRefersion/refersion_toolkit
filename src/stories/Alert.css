@@ -1,0 +1,39 @@
+blockquote {
+    margin: 0 0 20px;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+}
+
+blockquote span[class^="material-icons"] {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.info {
+    background: #e6f8fe;
+}
+
+.info span[class^="material-icons"] {
+    color: var(--rfsn-blue);
+}
+
+.error {
+    background: #f8e2e2;
+}
+
+.error span[class^="material-icons"] {
+    color: #db2222;
+}
+
+.success {
+    background: #ddffe1;
+}
+
+.success span[class^="material-icons"] {
+    color: var(--rfsn-green);
+}
+
+.default {
+    background: #f0f3f4;
+}

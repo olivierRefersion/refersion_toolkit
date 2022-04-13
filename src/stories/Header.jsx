@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-import { Icon } from './icon';
+import { Icon } from './Icon';
+import { Button } from './Button';
 import './header.css';
 
 /**
@@ -10,14 +11,14 @@ import './header.css';
 export const Header = ({ title, icon, loggedIn }) => {
   return (
     <header>
-      <div className="wrapper">
+      <div className="container grid">
         <div>
           <h1>
             <Icon display='boxed'classes='dark' icon={icon}/><span>{title}</span>
           </h1>
         </div>
         <div>
-          {loggedIn ? <Link to="/">User's image</Link>: <Link to="/home">Login</Link>}
+          {loggedIn ? '' : <Button label='Authenticate' withIcon={true} icon='lock' classes='primary with-icon' size='small' /> }
         </div>
       </div>
     </header>
