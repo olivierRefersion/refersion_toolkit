@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './button.css';
-import { Icon } from './Icon';
+import { Icon } from '../Icon/Icon';
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ classes, label, size, withIcon, icon, ...props }) => {
+export const Button = ({ classes, label, size, withIcon, icon, wrap, ...props }) => {
   return (
     <button
       type="button"
@@ -14,7 +14,7 @@ export const Button = ({ classes, label, size, withIcon, icon, ...props }) => {
       {...props}
     >
       {withIcon && <Icon icon={icon}/>}
-      {label}
+      {wrap ? <span>{label}</span> : label}
     </button>
   )
 }

@@ -24,7 +24,7 @@ button {
  * default button styles
  */
 .primary {
-  color: #fff;
+  color: var(--rfsn-dark-blue);
   background: var(--rfsn-green);
 }
 

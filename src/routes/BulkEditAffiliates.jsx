@@ -1,4 +1,4 @@
-import { Alert } from "../stories/Alert"
+import { Alert } from "../components"
 
 export default function BulkEditAffiliates() {
     return (

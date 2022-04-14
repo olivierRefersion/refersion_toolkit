@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Alert.css';
-import { Icon } from './Icon';
+import { Icon } from '../Icon/Icon';
 
 /**
  * Primary UI component for putting out important messages

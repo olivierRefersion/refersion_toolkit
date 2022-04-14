@@ -1,0 +1,44 @@
+.drag-area {
+    border: 2px dashed #ddd;
+    min-height: 150px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 30px 0;
+    cursor: pointer;
+}
+
+.drag-area.highlighted {
+    box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+}
+
+.drag-area.active {
+    border: 2px dashed var(--rfsn-green);
+}
+
+span.material-icons-outlined.upload {
+    font-size: 48px;
+    font-weight: 400;
+    color: #ddd;
+}
+
+.drag-area h2 {
+    margin: 0 0 10px 0;
+    color: #000;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.drag-area button {
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    outline: none;
+    background: transparent;
+    color: #000;
+    cursor: pointer;
+    padding: 0 4px 2px;
+}

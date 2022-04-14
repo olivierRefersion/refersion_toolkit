@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Modern Era";
-  src: url("./fonts/ModernEra-Medium.otf");
+  src: url("./assets/fonts/ModernEra-Medium.otf");
 }
 
 * {
@@ -67,47 +67,4 @@ a {
 
 main {
   padding: 20px 0;
-}
-
-/* sidebar */
-
-aside {
-  position: absolute;
-  top: 0;
-  min-width: 75px;
-  max-width: 75px;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  height: 100vh;
-}
-
-aside ul {
-  padding: 40px 0;
-  margin: 0;
-  list-style: none;
-}
-
-aside ul li {
-  margin-bottom: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-aside ul li a {
-  display: flex;
-  align-items: center;
-}
-
-aside ul li a span {
-  display: none;
-}
-
-#toggle {
-  background: var(--rfsn-dark-blue);
-  display: block;
-  padding: 18px 18px 19px 18px;
-}
-
-#toggle img {
-  max-width: 35px;
 }

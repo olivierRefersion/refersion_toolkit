@@ -1,13 +1,14 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Layout from './components/Layout'
-import Index from './components/Index';
-import BulkManualCommissionCredits from './components/BulkManualCommissionCredits';
-import BulkManualOrderCredits from './components/BulkManualOrderCredits';
-import BulkEditAffiliates from './components/BulkEditAffiliates';
-import BulkDeleteTriggers from './components/BulkDeleteTriggers';
-import BulkUploadOrders from './components/BulkUploadOrders';
-import NotFound from './components/NotFound';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from './routes';
+import BulkManualCommissionCredits from './routes/BulkManualCommissionCredits';
+import BulkManualOrderCredits from './routes/BulkManualOrderCredits';
+import BulkEditAffiliates from './routes/BulkEditAffiliates';
+import BulkDeleteTriggers from './routes/BulkDeleteTriggers';
+import BulkUploadOrders from './routes/BulkUploadOrders';
+import NotFound from './routes/NotFound';
+
 
 export default function App() {
   return (
