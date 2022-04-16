@@ -1,20 +1,23 @@
 const { default: axios } = require('axios');
-
 express = require('express');
-axios = require('axios');
 router = express.Router();
 
 
 
 router.route('/manualcredits').post((req, res, next) => {
     
-    axios({
-        method: 'post',
-        url: 'https://api.refersion.com/v2/conversion/manual_credit',
-        data: {
-          //Some data
-        }
-    });
+  // function gotThisFromTheBack(req.body){
+  //   console.log("I got "+ req.body.pubKey + " from  the front  end!")
+  // }
+
+  
+    // axios({
+    //     method: 'post',
+    //     url: 'https://api.refersion.com/v2/conversion/manual_credit',
+    //     data: {
+    //       //Some data
+    //     }
+    // });
     
     // user.create(req.body, (error, data) => {
     //     if (error) {
@@ -28,13 +31,13 @@ router.route('/manualcredits').post((req, res, next) => {
 
 router.route('/manualorders').post((req, res, next) => {
     
-    axios({
-        method: 'post',
-        url: 'https://www.refersion.dev/reference/manual_credit_order_id',
-        data: {
-          //Some data
-        }
-    });
+    // axios({
+    //     method: 'post',
+    //     url: 'https://www.refersion.dev/reference/manual_credit_order_id',
+    //     data: {
+    //       //Some data
+    //     }
+    // });
     
     // user.create(req.body, (error, data) => {
     //     if (error) {
@@ -45,3 +48,5 @@ router.route('/manualorders').post((req, res, next) => {
     //     }
     // })
 });
+
+module.exports = router;

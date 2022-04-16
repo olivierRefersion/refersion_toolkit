@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const apiRoute = require('../server/routes/apiRoutes');
+let bodyParser = require('body-parser');
 // const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -24,6 +25,12 @@ const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
 })
+
+app.post("/test",  (req, res) => {
+    res.send("we got" + req.body + "from the motherfucking front End");
+    console.log("We got  " + req.body + " from the back!")
+})
+
 // Error Handling
 app.use((req, res, next) => {
     next(createError(404));

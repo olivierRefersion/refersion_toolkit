@@ -14,14 +14,14 @@ export default class Form extends React.Component {
     pubKey: null,
     secKey: null,
     selectedFile: null,
-    json: null,
+    jsonDataFromcsv: null,
     response: null  //might need to rename this
   }
 
   handleChange = event => {
     //this.setState({ name: event.target.value });
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
   onFileChange = event => {
 
@@ -33,13 +33,15 @@ export default class Form extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.post('http://localhost:4000/manualcredit', jsonDataFromcsv)
+    axios.post('http://localhost:4000/test', this.state.pubKey)
             .then((res) => {
                 console.log(res.data)
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 console.log(error)
             });
-        this.setState({ state.response })
+    
+    //this.setState({ response: state.res }) NEED TO UNCOMMENT THIS TO SET STATE FOR RESULTS
     // const formAuthentication = {
     //   pubKey: this.state.pubKey,
     //   secKey: this.state.secKey,
@@ -49,19 +51,23 @@ export default class Form extends React.Component {
     // console.log(this.state.secKey);
 
     
-    // console.log(this.state.selectedFile);
-    //const objectData = CSV.parse(this.state.selectedFile, {complete: (results) => {
-      //this.setState({json: results.data})
-      //console.log("Finished:", results.data);
-    //}});
-    // setTimeout( () => {
-      
-    //   console.log(this.state.json);
-    //   console.log(this.state.pubKey);
-    //   console.log(this.state.secKey);
+    console.log(this.state.selectedFile);
+    const objectData = CSV.parse(this.state.selectedFile, {complete: (results) => {
+      this.setState({json: results.data})
+      console.log("Finished:", results.data);
+    }});
     
-    // }, 3000
+    
+    setTimeout( () => {
+      
+      console.log(this.state.json);
+      console.log(this.state.pubKey);
+      console.log(this.state.secKey);
+    
+    }, 3000)
 
+
+    
     // //I need a Promise I think.
       
     // );
@@ -103,7 +109,7 @@ export default class Form extends React.Component {
         // };
 
 
-  }
+    };
 
   render() {
     return (
