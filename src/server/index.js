@@ -25,6 +25,51 @@ const port = process.env.PORT || 5000;
 
 app.post("/test",  (req, res) => {
 
+    console.log(req.body.jsonDataFromcsv[1])
+    // for (let i = 0; i < req.body.jsonDataFromcsv.length; i++) {
+    //     // console.log(jsonObj[0].Order_ID);
+    //     // console.log(jsonObj[0].Affiliate_ID);
+    //     // console.log(jsonObj[0].Status);
+    //     // console.log(jsonObj[0].Notes);
+    //     let order_id = jsonObj[i].order_id; 
+    //     let id =  jsonObj[i].affiliate_id;
+    //     let status = jsonObj[i].status;
+    //     let notes = jsonObj[i].notes;
+    //     axios({
+    //             method: 'post',
+    //             url: '//api.refersion.com/v2/conversion/manual_credit',
+    //             headers: {
+    //                 "Refersion-Public-Key": req.body.pubkey,
+    //                 "Refersion-Secret-Key": req.body.secKey,
+    //                 "Content-Type": "application/json",
+    //                 "Access-Control-Allow-Origin": "*"
+    //             },
+    //             data: {
+    //                 "id":"6498741",
+    //                 "commission":1,
+    //                 "status":"PENDING",
+    //                 "currency":"USD",
+    //                 "notes":"Testing"
+    //             }   
+    //     })
+    //     .then(function (response) {
+    //     // handle success
+    //         console.log(`For ${order_id} the Post is ${response.statusText}. ${response.data.message}`);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(`For ${order_id}, ${error.response.data.error}`);
+    //         // console.log(error);
+    //     });
+            
+
+
+    // }
+    
+    
+    
+    
+    
+    
     //TODO: Put this in a loop
     //
     //   axios({
@@ -53,9 +98,15 @@ app.post("/test",  (req, res) => {
     //         console.log(error);
     //         // console.log(error);
     //     });
+    
+    // console.log(req.body.pubKey);
+    // console.log(req.body.secKey);
+    // console.log(req.body.jsonDataFromcsv);
 
-    res.json(req.body);
-    console.log(req.body)
+    
+    res.json(req.body.jsonDataFromcsv);
+    
+
     
     // res.json();
 })
