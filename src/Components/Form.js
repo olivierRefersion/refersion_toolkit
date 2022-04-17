@@ -33,13 +33,15 @@ export default class Form extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.post('http://localhost:4000/test', this.state.pubKey)
-            .then((res) => {
+    axios.post('http://localhost:5000/test', {
+      pubkey: this.state.pubKey
+    })
+    .then((res) => {
                 console.log(res.data)
-            })
-            .catch((error) => {
+    })
+    .catch((error) => {
                 console.log(error)
-            });
+    });
     
     //this.setState({ response: state.res }) NEED TO UNCOMMENT THIS TO SET STATE FOR RESULTS
     // const formAuthentication = {
@@ -50,12 +52,12 @@ export default class Form extends React.Component {
     // console.log(this.state.pubKey);
     // console.log(this.state.secKey);
 
-    
-    console.log(this.state.selectedFile);
-    const objectData = CSV.parse(this.state.selectedFile, {complete: (results) => {
-      this.setState({json: results.data})
-      console.log("Finished:", results.data);
-    }});
+    //PARSER
+    // console.log(this.state.selectedFile);
+    // const objectData = CSV.parse(this.state.selectedFile, {complete: (results) => {
+    //   this.setState({json: results.data})
+    //   console.log("Finished parsing:", results.data);
+    // }});
     
     
     setTimeout( () => {
@@ -130,18 +132,3 @@ export default class Form extends React.Component {
     )
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

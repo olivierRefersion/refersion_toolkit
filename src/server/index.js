@@ -6,8 +6,7 @@ let bodyParser = require('body-parser');
 // const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(bodyParser.json({
     extended: true
 }));
 app.use(cors());
@@ -21,14 +20,44 @@ app.use(cors());
 // });
 
 app.use('/api', apiRoute)
-const port = process.env.PORT || 4000;
-const server = app.listen(port, () => {
-    console.log('Connected to port ' + port)
-})
+const port = process.env.PORT || 5000;
+
 
 app.post("/test",  (req, res) => {
-    res.send("we got" + req.body + "from the motherfucking front End");
-    console.log("We got  " + req.body + " from the back!")
+
+    //TODO: Put this in a loop
+    //
+    //   axios({
+    //     method: 'post',
+    //     url: '//api.refersion.com/v2/conversion/manual_credit',
+    //     headers: {
+    //         "Refersion-Public-Key": req.body.pubkey,
+    //         "Refersion-Secret-Key": req.body.secKey,
+    //         "Content-Type": "application/json",
+    //         "Access-Control-Allow-Origin": "*"
+    //     },
+    //     data: {
+    //         "id":"6498741",
+    //         "commission":1,
+    //         "status":"PENDING",
+    //         "currency":"USD",
+    //         "notes":"Testing"
+    //     }   
+    //     })
+    //     .then(function (response) {
+    //     // handle success
+    //     console.log(response);
+    //     })
+    //     .catch(function (error) {
+
+    //         console.log(error);
+    //         // console.log(error);
+    //     });
+
+    res.json(req.body);
+    console.log(req.body)
+    
+    // res.json();
 })
 
 // Error Handling
@@ -40,6 +69,11 @@ app.use(function (err, req, res, next) {
     if (!err.statusCode) err.statusCode = 500;
     res.status(err.statusCode).send(err.message);
 });
+
+
+const server = app.listen(port, () => {
+    console.log('Connected to port ' + port)
+})
 
 // function sendManualCredits(){
 
