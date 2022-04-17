@@ -92,44 +92,6 @@ export default class Form extends React.Component {
     
     // //I need a Promise I think.
       
-    // );
-    //console.log(this.state.pubKey);
-    //console.log(this.state.secKey);
-    // for (let i = 0; i < dataReadyToBeSent.length; i++) {
-        //     // console.log(dataReadyToBeSent[0].Order_ID);
-        //     // console.log(dataReadyToBeSent[0].Affiliate_ID);
-        //     // console.log(dataReadyToBeSent[0].Status);
-        //     // console.log(dataReadyToBeSent[0].Notes);
-        //     let order_id = dataReadyToBeSent[i].order_id; 
-        //     let id =  dataReadyToBeSent[i].affiliate_id;
-        //     let status = dataReadyToBeSent[i].status;
-        //     let notes = dataReadyToBeSent[i].notes;
-        //     axios({
-        //         method: 'post',
-        //         url: 'https://www.refersion.com/api/manual_credit_order_id',
-        //         headers: {
-        //             "Refersion-Public-Key": this.state.pubKey,
-        //             "Refersion-Secret-Key": this.state.secKey,
-        //             "Content-Type": "application/json"
-        //         },
-        //         data: {
-        //             order_id,
-        //             id,
-        //             status,
-        //             notes
-        //         }   
-        //         })
-        //         .then(function (response) {
-        //         // handle success
-        //         console.log(`For ${order_id} the Post is ${response.statusText}. ${response.data.message}`);
-        //         })
-        //         .catch(function (error) {
-
-        //             console.log(`For ${order_id}, ${error.response.data.error}`);
-        //             // console.log(error);
-        //         });
-        // };
-
 
     };
 
