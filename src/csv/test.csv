@@ -1,2 +1,2 @@
-"order_id	affiliate_id	status	notes"
-"1120	4017263	Approved	This is a note."
+order_id,affiliate_id,status,notes
+1120,4017263,Approved,This is a note.
