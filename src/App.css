@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+:root {
+  --rfsn-dark-blue: #071a2b;
+  --rfsn-green: #54d362;
+  --rfsn-blue: #1bb3f7;
+  --muted-blue: #beebfa;
+  --rfsn-purple: #9079ff;
+  --muted-purple: #e9d7fa;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: "Modern Era";
+  src: url("./assets/fonts/ModernEra-Medium.otf");
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  font-family: 'Modern Era', sans-serif;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.full-width {
+  width: 100%;
+}
+
+.flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.4rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+h5 {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 12pt;
+  color: var(--rfsn-dark-blue);
+}
+blockquote.info span.material-icons-outlined {
+  color: var(--rfsn-blue);
+  margin-right: 10px;
+}
+
+a {
+  font-weight: bold;
+  color: var(--rfsn-green);
+  text-decoration: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 70%;
+}
+
+main {
+  padding: 20px 0;
 }
