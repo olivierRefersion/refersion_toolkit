@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Icon, titleMap, Button } from '../';
+import { Icon, titleMap, Button } from '..';
 import logoIcon from '../../assets/images/refersion-icon-white.svg'
 import './SideNav.css';
 

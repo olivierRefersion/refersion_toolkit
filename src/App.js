@@ -10,7 +10,7 @@ import BulkUploadOrders from './routes/BulkUploadOrders';
 import NotFound from './routes/NotFound';
 
 // Olivier's includes
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+//import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //import CreateUser from "./components/create-user.component";
 import Form from "./components/Form.js";
 

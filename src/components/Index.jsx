@@ -31,5 +31,9 @@ export const titleMap = {
     "/bulk-upload-orders": {
         title: "Bulk Upload Orders from CSV",
         icon: "file_present"
+    },
+    "/form": {
+        title: "Form",
+        icon: "file_present"
     }
 }
