@@ -2,7 +2,7 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 //import CreateUser from "./components/create-user.component";
-import Form from "./components/Form.js";
+import Form from "./Components/Form.js";
 
 
 

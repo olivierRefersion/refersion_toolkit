@@ -41,7 +41,7 @@ export default class Form extends React.Component {
             console.log(jsonObj)
             
             //Axios call to our backend endpoint with the Public Key, Secret Key and Json Object in the body of the request.
-            axios.post('http://localhost:5000/test', {
+            axios.post('http://localhost:3000/test', {
               pubKey: this.state.pubKey,
               secKey: this.state.secKey,
               jsonObj

@@ -15,7 +15,7 @@ app.use(cors());
 
 
 app.use('/api', apiRoute)
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 
 app.post("/test",  (req, res) => {
