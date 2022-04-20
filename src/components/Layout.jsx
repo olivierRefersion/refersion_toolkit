@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { Outlet, useLocation} from "react-router-dom";
-import { Header, Modal, SideNav, titleMap } from '.';
+import { Header, Modal, SideNav, titleMap, AuthForm } from '.';
 
 export default function Layout() {
 
@@ -26,7 +26,7 @@ export default function Layout() {
             <SideNav />
             <Outlet />
             <Modal className={toggleModalClassName} close={closeModal} title='Modal'>
-                <p>Modal</p>
+                <AuthForm />
             </Modal>
         </>
     );

@@ -2,18 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Layout from './components/Layout'
 import Index from './routes';
-import BulkManualCommissionCredits from './routes/BulkManualCommissionCredits';
-import BulkManualOrderCredits from './routes/BulkManualOrderCredits';
-import BulkEditAffiliates from './routes/BulkEditAffiliates';
-import BulkDeleteTriggers from './routes/BulkDeleteTriggers';
-import BulkUploadOrders from './routes/BulkUploadOrders';
 import NotFound from './routes/NotFound';
-
-// Olivier's includes
-//import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-//import CreateUser from "./components/create-user.component";
-import Form from "./components/Form.js";
-
+import { UploadForm } from "./components";
 
 export default function App() {
   return (
@@ -21,12 +11,11 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Index />} />
-        <Route exact path="/bulk-manual-commission-credits" element={<BulkManualCommissionCredits />} />
-        <Route exact path="/bulk-manual-order-credits" element={<BulkManualOrderCredits />} />
-        <Route exact path="/bulk-edit-affiliates" element={<BulkEditAffiliates />} />
-        <Route exact path="/bulk-delete-triggers" element={<BulkDeleteTriggers />} />
-        <Route exact path="/bulk-upload-orders" element={<BulkUploadOrders />} />   
-        <Route exact path="/form" element={<Form/>} />
+        <Route exact path="/bulk-manual-commission-credits" element={<UploadForm />} />
+        <Route exact path="/bulk-manual-order-credits" element={<UploadForm />} />
+        <Route exact path="/bulk-edit-affiliates" element={<UploadForm />} />
+        <Route exact path="/bulk-delete-triggers" element={<UploadForm />} />
+        <Route exact path="/bulk-upload-orders" element={<UploadForm />} />
       </Route>
       <Route path="*" element={<NotFound />} /> 
     </Routes>
