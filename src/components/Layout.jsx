@@ -17,14 +17,16 @@ export default function Layout() {
 
     return (
         <>
+            <SideNav />
+            <section>
             <Header
                 title={titleMap[location.pathname].title}
                 icon={titleMap[location.pathname].icon}
                 loggedIn={loggedIn}
                 toggleModal={toggleModal}
             />
-            <SideNav />
             <Outlet />
+            </section>
             <Modal className={toggleModalClassName} close={closeModal} title='Modal'>
                 <AuthForm />
             </Modal>

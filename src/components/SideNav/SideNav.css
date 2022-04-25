@@ -6,11 +6,16 @@ aside {
     max-width: 75px;
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     height: 100vh;
+    background: #fff;
 }
 
 aside.open {
     min-width: fit-content;
     max-width: 250px;
+}
+
+aside.open ~ section {
+    margin-left: 200px; 
 }
 
 aside ul {

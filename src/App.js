@@ -3,7 +3,7 @@ import './App.css';
 import Layout from './components/Layout'
 import Index from './routes';
 import NotFound from './routes/NotFound';
-import { UploadForm } from "./components";
+import { UploadForm, titleMap } from "./components";
 
 export default function App() {
   return (
@@ -11,11 +11,11 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Index />} />
-        <Route exact path="/bulk-manual-commission-credits" element={<UploadForm />} />
-        <Route exact path="/bulk-manual-order-credits" element={<UploadForm />} />
-        <Route exact path="/bulk-edit-affiliates" element={<UploadForm />} />
-        <Route exact path="/bulk-delete-triggers" element={<UploadForm />} />
-        <Route exact path="/bulk-upload-orders" element={<UploadForm />} />
+        <Route exact path="/bulk-manual-commission-credits" element={<UploadForm data={titleMap['/bulk-manual-commission-credits']}/>} />
+        <Route exact path="/bulk-manual-order-credits" element={<UploadForm data={titleMap['/bulk-manual-order-credits']}/>} />
+        <Route exact path="/bulk-edit-affiliates" element={<UploadForm data={titleMap['/bulk-edit-affiliates']}/>} />
+        <Route exact path="/bulk-delete-triggers" element={<UploadForm data={titleMap['/bulk-delete-triggers']}/>} />
+        <Route exact path="/bulk-upload-orders" element={<UploadForm data={titleMap['/bulk-upload-orders']}/>} />
       </Route>
       <Route path="*" element={<NotFound />} /> 
     </Routes>

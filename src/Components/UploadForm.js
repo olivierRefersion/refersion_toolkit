@@ -3,7 +3,7 @@ import { Alert, Dropzone, Form, Button } from "."
 import csvtojson from "csvtojson";
 import axios from "axios";
 
-export default function UploadForm() {
+export default function UploadForm(props) {
 
     const [formState, setFormState] = useState({
         checkbox: null,
@@ -43,7 +43,7 @@ export default function UploadForm() {
     return (
         <main>
             <div className="container">
-                <Alert type='info'>Something related to bulk deleting triggers</Alert>
+                <Alert type='info'>{props.data.description}</Alert>
                 <Form action=''>
                     <>
                         <Dropzone setParentFormState={setFormState} parentFormState={formState} />

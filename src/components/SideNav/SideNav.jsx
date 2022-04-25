@@ -56,7 +56,7 @@ export const SideNav = () => {
             <Button
                 label="Back to testing suite"
                 classes='primary with-icon'
-                withIcon='true'
+                withIcon={true}
                 icon='arrow_back'
                 wrap='true'
                 size='small'
