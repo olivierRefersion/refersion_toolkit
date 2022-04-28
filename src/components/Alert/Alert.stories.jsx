@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert } from './Alert';
 
 export default {
-  title: 'Components/Alerts',
+  title: 'components/Alerts',
   component: Alert,
   decorators: [
     (Story) => (

@@ -2,7 +2,7 @@ import React from 'react';
 import { Dropzone } from './Dropzone';
 
 export default {
-    title: 'Components/Dropzone',
+    title: 'components/Dropzone',
     component: Dropzone,
     decorators: [
         (Story) => (

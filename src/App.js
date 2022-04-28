@@ -1,7 +1,8 @@
+import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
-import Layout from './components/Layout'
-import Index from './routes';
+import Layout from './components/Layout.jsx'
+import Index from './routes/index';
 import NotFound from './routes/NotFound';
 import { UploadForm } from "./components";
 
@@ -43,7 +44,7 @@ export default function App() {
 
 
 // import './App.css';
-// import Form from './Components/Form';
+// import Form from './components/Form';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 // function App() {
