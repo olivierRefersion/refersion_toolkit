@@ -4,12 +4,18 @@ import React, { Component } from "react";
 // import { useState } from "react";
 import { Form, Button } from '.';
 //import {sendManualCredits as sendCredits} from "../API/routes"
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 export default class AuthForm extends React.Component {
+
   state = {
     pubKey: null,
     secKey: null,
-    response: null  //might need to rename this
+    response: null,  //might need to rename this,
+    //pubKeyCookie: cookies.get('pubKeyCookies'),
+    //secKeyCookie: null
+
   }
 
   handleChange = event => {
@@ -27,18 +33,25 @@ export default class AuthForm extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state)
-    /*
-    axios.post('http://localhost:3000/test', {
+
+    axios.get('http://localhost:4000/authenticate', {
       pubKey: this.state.pubKey,
       secKey: this.state.secKey,
     })
       .then((res) => {
-        console.log(res.data)
+        //console.log(res.status)
+        // console.log(this.state.pubKey)
+        // console.log(this.state.secKey)
+
+        if (res.status === 200){
+          //TODO some work for this? Or handle cookies in the backend?
+        }
+
       })
       .catch((error) => {
         console.log(error)
       })
-    */
+
   }
   render() {
     return (

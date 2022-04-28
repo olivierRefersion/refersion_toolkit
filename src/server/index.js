@@ -1,18 +1,19 @@
 const express = require("express");
+const cookieParser = require('cookie-parser')
 const cors = require("cors");
 const axios = require("axios");
 const apiRoute = require('../server/routes/apiRoutes');
+const {response} = require("express");
 //let bodyParser = require('body-parser');
 // const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded());
-
 app.use(cors());
+app.use('/api', apiRoute);
+app.use(cookieParser());
 
-
-app.use('/api', apiRoute)
 const port = process.env.PORT || 4000;
 
 
@@ -70,6 +71,48 @@ app.post("/test",  (req, res) => {
     res.json();
     
 })
+
+app.get("/authenticate",  (req, res) => {
+
+
+    // axios({
+    //     method: 'post',
+    //     url: 'https://www.refersion.com/api/check_account',
+    //     headers: {
+    //         "Refersion-Public-Key": req.body.pubKey,
+    //         "Refersion-Secret-Key": req.body.secKey,
+    //         "Content-Type": "application/json",
+    //         "Accept": "application/json",
+    //         "Access-Control-Allow-Origin": "*"
+    //     },
+    //     data: []
+    //
+    // })
+    //     .then(function (response) {
+    //
+    //
+    //
+    //         //console.log(response.statusText);
+    //         //console.log("Trying to set cookie.")
+    //         //res.cookie("pubKey",req.body.pubKey);
+    //         //res.send('Cookie have been saved successfully');
+    //
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //         // console.log(error);
+    //     });
+    res.cookie(`pubKey`,`this is a pub key`);
+    res.send('Cookie has been saved successfully');
+    //res.send(response.statusText);
+
+})
+
+// app.get('/setcookie', (req, res) => {
+//     res.cookie(`Cookie token name`,`encrypted cookie string Value`);
+//     res.send('Cookie have been saved successfully');
+// });
+
 
 // Error Handling
 app.use((req, res, next) => {
