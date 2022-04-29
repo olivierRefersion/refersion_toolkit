@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Alert, Dropzone, Form, Button } from "../components"
+import axios from "axios";
+import csvtojson from "csvtojson";
 
 export default function BulkDeleteTriggers() {
 
@@ -9,7 +11,35 @@ export default function BulkDeleteTriggers() {
         e.preventDefault()
         console.log(formState)
         // TODO: Pass the data to the backend to handle the csv upload
+        formState.file.text()
+            .then((result) => {
+
+                //Use the csvtojson module to change the previous string to a json object.
+                csvtojson().fromString(result).then((jsonObj) => {
+                    console.log(jsonObj)
+                    console.log(sessionStorage.getItem("pk"));
+
+                    let pubKey = sessionStorage.getItem("pk");
+                    let secKey = sessionStorage.getItem("sk");
+                    //Axios call to our backend endpoint with the Public Key, Secret Key and Json Object in the body of the request.
+
+                    axios.post('http://localhost:4000/deletetriggers', {
+                        jsonObj,
+                        pubKey,
+                        secKey
+                    })
+                        .then((res) => {
+                            console.log(res)
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        });
+
+                });
+            })
     }
+
+
 
     return (
         <main>

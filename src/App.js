@@ -1,9 +1,11 @@
+import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
-import Layout from './components/Layout'
-import Index from './routes';
+import Layout from './components/Layout.jsx'
+import Index from './routes/index';
 import NotFound from './routes/NotFound';
 import { UploadForm } from "./components";
+import BulkDeleteTriggers from "./routes/BulkDeleteTriggers";
 
 export default function App() {
   return (
@@ -14,7 +16,7 @@ export default function App() {
         <Route exact path="/bulk-manual-commission-credits" element={<UploadForm />} />
         <Route exact path="/bulk-manual-order-credits" element={<UploadForm />} />
         <Route exact path="/bulk-edit-affiliates" element={<UploadForm />} />
-        <Route exact path="/bulk-delete-triggers" element={<UploadForm />} />
+        <Route exact path="/bulk-delete-triggers" element={<BulkDeleteTriggers />} />
         <Route exact path="/bulk-upload-orders" element={<UploadForm />} />
       </Route>
       <Route path="*" element={<NotFound />} /> 
@@ -43,7 +45,7 @@ export default function App() {
 
 
 // import './App.css';
-// import Form from './Components/Form';
+// import Form from './components/Form';
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 // function App() {

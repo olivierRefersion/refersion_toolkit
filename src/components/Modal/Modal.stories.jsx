@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from './Modal';
 
 export default {
-  title: 'Components/Modals',
+  title: 'components/Modals',
   component: Modal,
   decorators: [
     (Story) => (

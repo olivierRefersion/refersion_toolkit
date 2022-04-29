@@ -1,15 +1,15 @@
 import axios from "axios";
 import React, { Component } from "react";
-// import { sendManualOrders } from "../functions";
-// import { useState } from "react";
 import { Form, Button } from '.';
-//import {sendManualCredits as sendCredits} from "../API/routes"
+
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
 export default class AuthForm extends React.Component {
+//Setting state
   state = {
     pubKey: null,
     secKey: null,
-    response: null  //might need to rename this
   }
 
   handleChange = event => {
@@ -17,6 +17,14 @@ export default class AuthForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  //Function to add session storage values after authentication.
+  makeLocalStorageValues = () => {
+    const { pubKey, secKey } = this.state;
+    sessionStorage.setItem('pk', this.state.pubKey);
+    sessionStorage.setItem('sk', this.state.secKey);
+    alert("Your session is authenticated. Please proceed with file upload and processing.")
+
+  };
   onFileChange = event => {
 
     // Update the state
@@ -26,19 +34,30 @@ export default class AuthForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state)
-    /*
-    axios.post('http://localhost:3000/test', {
+    //console.log(this.state)
+
+    //Post Pub and Sec key to our authentication endpoint.
+    axios.post('http://localhost:4000/authenticate', {
       pubKey: this.state.pubKey,
       secKey: this.state.secKey,
     })
       .then((res) => {
         console.log(res.data)
+
+        //Check if authentication endpoint has validated the submitted keys
+        if (res.data == "OK"){
+          //If submitted keys are valid then add to session storage.
+          this.makeLocalStorageValues();
+        } else {
+
+          alert("Session could not be authenticated. Please check your keys.")
+        }
+
       })
       .catch((error) => {
         console.log(error)
       })
-    */
+
   }
   render() {
     return (
