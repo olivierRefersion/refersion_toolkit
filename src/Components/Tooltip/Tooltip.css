@@ -1,0 +1,159 @@
+/* 
+ * Tooltip Styles
+ */
+ [data-tooltip-top],
+ [data-tooltip-right],
+ [data-tooltip-bottom],
+ [data-tooltip-left] {
+     position: relative;
+     display: inline-block;
+     text-decoration: none;
+     box-sizing: border-box;
+     --tooltip-background: rgba(0, 0, 0, 0.9);
+     --tooltip-font-color: #fff;
+     --tooltip-font-size: 8.5pt;
+     --tooltip-border-radius: 3px;
+     --long-text-max-width: 30ch;
+ }
+ 
+ [data-tooltip-top]::after,
+ [data-tooltip-right]::after,
+ [data-tooltip-bottom]::after,
+ [data-tooltip-left]::after,
+ [data-tooltip-top]::before,
+ [data-tooltip-right]::before,
+ [data-tooltip-bottom]::before,
+ [data-tooltip-left]::before {
+     -webkit-transition: opacity 0.5s ease;
+     -moz-transition: opacity 0.5s ease;
+     -ms-transition: opacity 0.5s ease;
+     -o-transition: opacity 0.5s ease;
+     transition: opacity 0.5s ease;
+     opacity: 0;
+     display: none;
+     position: absolute;
+     z-index: 10;
+     box-sizing: border-box;
+ }
+ 
+ [data-tooltip-top]:hover::after,
+ [data-tooltip-right]:hover::after,
+ [data-tooltip-bottom]:hover::after,
+ [data-tooltip-left]:hover::after,
+ [data-tooltip-top]:hover::before,
+ [data-tooltip-right]:hover::before,
+ [data-tooltip-bottom]:hover::before,
+ [data-tooltip-left]:hover::before {
+     opacity: 1;
+     display: block;
+ }
+ 
+ [data-tooltip-top]::before,
+ [data-tooltip-right]::before,
+ [data-tooltip-bottom]::before,
+ [data-tooltip-left]::before {
+     content: "";
+     width: 0;
+     height: 0;
+ }
+ 
+ [data-tooltip-top]::after,
+ [data-tooltip-right]::after,
+ [data-tooltip-bottom]::after,
+ [data-tooltip-left]::after {
+     background: var(--tooltip-background);
+     padding: 3px 6px;
+     color: var(--tooltip-font-color);
+     font-size: var(--tooltip-font-size);
+     font-weight: normal;
+     letter-spacing: 0.5px;
+     line-height: 1.2;
+     -webkit-border-radius: var(--tooltip-border-radius);
+     -moz-border-radius: var(--tooltip-border-radius);
+     -ms-border-radius: var(--tooltip-border-radius);
+     -o-border-radius: var(--tooltip-border-radius);
+     border-radius: var(--tooltip-border-radius);
+     inline-size: max-content;
+     overflow-wrap: anywhere;
+     min-width: inherit;
+     max-width: var(--long-text-max-width);
+ }
+ 
+ /* Top Tooltip styles */
+ [data-tooltip-top]::before {
+     border-top: 4px solid var(--tooltip-background);
+     border-left: 4px solid transparent;
+     border-right: 4px solid transparent;
+     left: 50%;
+     transform: translate(-50%);
+     bottom: 100%;
+ }
+ 
+ [data-tooltip-top]::after {
+     content: attr(data-tooltip-top);
+     left: 50%;
+     transform: translate(-50%);
+     bottom: 112%;
+ }
+ 
+ /* Right Tooltip styles */
+ [data-tooltip-right]::before {
+     border-top: 4px solid var(--tooltip-background);
+     border-left: 4px solid transparent;
+     border-right: 4px solid transparent;
+     -webkit-transform: rotate(90deg);
+     -moz-transform: rotate(90deg);
+     -ms-transform: rotate(90deg);
+     -o-transform: rotate(90deg);
+     transform: rotate(90deg) translateX(40%);
+     bottom: 50%;
+     right: -1ch;
+ }
+ 
+ [data-tooltip-right]::after {
+     content: attr(data-tooltip-right);
+     bottom: 20%;
+     left: 100%;
+     margin-left: 14px;
+     transform: translate(-1ch);
+ }
+ 
+ /* Bottom Tooltip styles */
+ [data-tooltip-bottom]::before {
+     border-bottom: 4px solid var(--tooltip-background);
+     border-left: 4px solid transparent;
+     border-right: 4px solid transparent;
+     left: 50%;
+     transform: translate(-50%);
+     top: 100%;
+ }
+ 
+ [data-tooltip-bottom]::after {
+     content: attr(data-tooltip-bottom);
+     top: 112%;
+     left: 50%;
+     transform: translate(-50%);
+ }
+ 
+ /* Left Tooltip styles */
+ [data-tooltip-left]::before {
+     border-bottom: 4px solid var(--tooltip-background);
+     border-left: 4px solid transparent;
+     border-right: 4px solid transparent;
+     -webkit-transform: rotate(90deg);
+     -moz-transform: rotate(90deg);
+     -ms-transform: rotate(90deg);
+     -o-transform: rotate(90deg);
+     transform: rotate(90deg) translateX(40%);
+     bottom: 50%;
+     left: -1ch;
+ }
+ 
+ [data-tooltip-left]::after {
+     content: attr(data-tooltip-left);
+     bottom: 20%;
+     right: 100%;
+     margin-right: 1px;
+     transform: translate(-1ch);
+ }
+ 

@@ -6,8 +6,9 @@ export { Modal } from './Modal/Modal';
 export { Dropzone } from './Dropzone/Dropzone';
 export { Form } from './Form/Form';
 export { SideNav } from './SideNav/SideNav';
-export { default as AuthForm } from './Form.js';
+export { AuthForm } from './AuthForm.js';
 export { default as UploadForm } from './UploadForm.js';
+export { Tooltip } from './Tooltip/Tooltip';
 
 export const titleMap = {
     "/": {

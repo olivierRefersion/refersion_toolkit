@@ -62,6 +62,17 @@ aside.open button span {
     display: inline-block;
 }
 
+aside.open [data-tooltip-top]::before,
+aside.open [data-tooltip-top]::after,
+aside.open [data-tooltip-right]::before,
+aside.open [data-tooltip-right]::after,
+aside.open [data-tooltip-left]::before,
+aside.open [data-tooltip-left]::after,
+aside.open [data-tooltip-bottom]::before,
+aside.open [data-tooltip-bottom]::after {
+    display: none;
+}
+
 #toggle {
     background: var(--rfsn-dark-blue);
     display: block;
@@ -71,4 +82,9 @@ aside.open button span {
 
 #toggle img {
     max-width: 35px;
+}
+
+#toggle img.full {
+    height: 34px;
+    max-width: unset;
 }

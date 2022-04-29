@@ -11,8 +11,8 @@ export default function Index() {
                 <h1 className="margin-top">Welcome to our bulk internal tools suite</h1>
                 <div className="home-grid">
                     {
-                        homepageTitleMap.map((route) =>
-                            <Link to={route} style={{ display: 'block' }}>
+                        homepageTitleMap.map((route, i) =>
+                            <Link to={route} style={{ display: 'block' }} key={i}>
                                 <h4>{titleMap[route].title}</h4>
                                 <p className="muted">{titleMap[route].description}</p>
                             </Link>

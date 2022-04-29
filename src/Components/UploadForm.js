@@ -50,12 +50,12 @@ export default function UploadForm(props) {
                         <div className="formItem">
                             <label>
                                 <input type='checkbox' onChange={(e) => setFormState({ ...formState, checkbox: e.target.checked })} />
-                                I have double-checked the data in the file. I am ready to proceed with the bulk operation
+                                I understand that there will be no validation against the data in my file. I confirmed I have checked the data for correctness and I am ready to upload.
                             </label>
                         </div>
                         <div className="formItem inline-buttons">
                             <Button label="Process Upload" onClick={handleSubmit} classes="secondary" />
-                            <Button label="Reset" classes="secondary-outlined" />
+                            {/*<Button label="Reset" classes="secondary-outlined" />*/}
                         </div>
                     </>
                 </Form>

@@ -9,7 +9,7 @@ export const Modal = ({ close, children, title, ...props }) => {
             <section className="modal-main">
                 <div className='modal-header'>
                     <h4>{title}</h4>
-                    <Icon icon="close" onClick={close} />
+                    <Icon icon="close" onClick={close} id="close"/>
                 </div>
                 <div className='modal-content'>
                     {children}

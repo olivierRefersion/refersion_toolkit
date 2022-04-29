@@ -1,5 +1,6 @@
 import React from 'react';
 import { Dropzone } from './Dropzone';
+import { Icon } from '../.';
 
 export default {
     title: 'Components/Dropzone',

@@ -147,3 +147,12 @@ aside ul li a:hover span.material-icons-outlined {
   background: var(--rfsn-green);
   color: #fff;
 }
+
+aside ul li a.active span:not(span.material-icons-outlined) {
+  color: var(--rfsn-green);
+}
+
+aside ul li a.active span.material-icons-outlined {
+  background: var(--rfsn-green);
+  color: #fff;
+}
