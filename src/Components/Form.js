@@ -13,8 +13,7 @@ export default class AuthForm extends React.Component {
     pubKey: null,
     secKey: null,
     response: null,  //might need to rename this,
-    //pubKeyCookie: cookies.get('pubKeyCookies'),
-    //secKeyCookie: null
+
 
   }
 
@@ -34,7 +33,7 @@ export default class AuthForm extends React.Component {
     event.preventDefault();
     console.log(this.state)
 
-    axios.get('http://localhost:4000/authenticate', {
+    axios.post('http://localhost:4000/authenticate', {
       pubKey: this.state.pubKey,
       secKey: this.state.secKey,
     })
