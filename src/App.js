@@ -5,6 +5,7 @@ import Layout from './components/Layout.jsx'
 import Index from './routes/index';
 import NotFound from './routes/NotFound';
 import { UploadForm } from "./components";
+import BulkDeleteTriggers from "./routes/BulkDeleteTriggers";
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
         <Route exact path="/bulk-manual-commission-credits" element={<UploadForm />} />
         <Route exact path="/bulk-manual-order-credits" element={<UploadForm />} />
         <Route exact path="/bulk-edit-affiliates" element={<UploadForm />} />
-        <Route exact path="/bulk-delete-triggers" element={<UploadForm />} />
+        <Route exact path="/bulk-delete-triggers" element={<BulkDeleteTriggers />} />
         <Route exact path="/bulk-upload-orders" element={<UploadForm />} />
       </Route>
       <Route path="*" element={<NotFound />} /> 

@@ -35,7 +35,7 @@ app.post("/sendmanualcredits",  (req, res) => {
 
         axios({
                 method: 'post',
-                url: 'https://api.refersion.com/v2/conversion/manual_credit',
+                url: 'https://api.rfsndev.com/v2/conversion/manual_credit',
                 headers: {
                     "Refersion-Public-Key": req.body.pubKey,
                     "Refersion-Secret-Key": req.body.secKey,
@@ -85,7 +85,7 @@ app.post("/sendmanualorders",  (req, res) => {
         let notes = req.body.jsonObj[i].notes;
         axios({
             method: 'post',
-            url: 'https://www.refersion.com/api/manual_credit_order_id',
+            url: 'https://www.rfsndev.com/api/manual_credit_order_id',
             headers: {
                 "Refersion-Public-Key": "pub_dbc37e60b31cdaa21e11",
                 "Refersion-Secret-Key": "sec_76f6cb125e64c4ec22e5",
@@ -118,18 +118,20 @@ app.post("/sendmanualorders",  (req, res) => {
 //Delete Triggers Endpoint
 app.post("/deletetriggers",  (req, res) => {
 
-
+    console.log(req.body.jsonObj);
+    console.log(req.body.pubKey);
+    console.log(req.body.secKey);
     //Take the json object from the frontend request and loop through it
-    for (let i = 0; i < jsonObj.length; i++) {
-        let affiliate_id = jsonObj[i].affiliate_id;
-        let trigger =  jsonObj[i].trigger;
-        let type = jsonObj[i].type;
+    for (let i = 0; i < req.body.jsonObj.length; i++) {
+        let affiliate_id = req.body.jsonObj[i].affiliate_id;
+        let trigger =  req.body.jsonObj[i].trigger;
+        let type = req.body.jsonObj[i].type;
         axios({
             method: 'post',
             url: 'https://www.rfsndev.com/api/delete_affiliate_trigger',
             headers: {
-                "Refersion-Public-Key": "pub_0e2f3f67eaacbb4f5f65",
-                "Refersion-Secret-Key": "sec_0f9b8df9a51d27f551d1",
+                "Refersion-Public-Key": req.body.pubKey,
+                "Refersion-Secret-Key": req.body.secKey,
                 "Content-Type": "application/json",
             },
             data: {
@@ -222,7 +224,7 @@ app.post("/authenticate",  (req, res) => {
     //Leverage axios again to send the keys back to Refersion's check_account endpoint
     axios({
         method: 'post',
-        url: 'https://www.refersion.com/api/check_account',
+        url: 'https://www.rfsndev.com/api/check_account',
         headers: {
             "Refersion-Public-Key": req.body.pubKey,
             "Refersion-Secret-Key": req.body.secKey,
