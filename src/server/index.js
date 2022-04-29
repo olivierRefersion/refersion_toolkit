@@ -235,38 +235,13 @@ app.post("/authenticate",  (req, res) => {
     })
         .then(function (response) {
             //Check to see if response is ok and keys are valid
-            console.log(response.status);
-            if (response.status === 200) {
-                //Second axios call to set the Cookies
-                axios({
-                    method: 'get',
-                    url: 'http://localhost:4000/setcookie',
-                    headers: {
-                        //"Cookie": req.body.pubKey,
-                        // "Refersion-Secret-Key": req.body.secKey,
-                        // "Content-Type": "application/json",
-                        // "Accept": "application/json",
-                        // "Access-Control-Allow-Origin": "*"
-                    },
-                    //data: {pubKeyCookie : req.body.pubKey}
 
-                })
-                    .then(function (response) {
-                        //console.log(response)
-                })
-                    .catch(function (error) {
-                    console.log(error);
-                    // console.log(error);
-                });
-                //console.log(req.body.pubKey);
-            };
+            res.send(response.statusText)
         })
         .catch(function (error) {
-            //console.log(error);
-            // console.log(error);
+            res.send(error.response.data.error);
+            //console.log(error.response.data.error);
         });
-    res.send();
-    //res.send(response.statusText);
 })
 
 //Set Cookie Endpoint
