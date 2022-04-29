@@ -75,43 +75,64 @@ app.post("/test",  (req, res) => {
 app.get("/authenticate",  (req, res) => {
 
 
-    // axios({
-    //     method: 'post',
-    //     url: 'https://www.refersion.com/api/check_account',
-    //     headers: {
-    //         "Refersion-Public-Key": req.body.pubKey,
-    //         "Refersion-Secret-Key": req.body.secKey,
-    //         "Content-Type": "application/json",
-    //         "Accept": "application/json",
-    //         "Access-Control-Allow-Origin": "*"
-    //     },
-    //     data: []
-    //
-    // })
-    //     .then(function (response) {
-    //
-    //
-    //
-    //         //console.log(response.statusText);
-    //         //console.log("Trying to set cookie.")
-    //         //res.cookie("pubKey",req.body.pubKey);
-    //         //res.send('Cookie have been saved successfully');
-    //
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //         // console.log(error);
-    //     });
+    axios({
+        method: 'post',
+        url: 'https://www.refersion.com/api/check_account',
+        headers: {
+            "Refersion-Public-Key": req.body.pubKey,
+            "Refersion-Secret-Key": req.body.secKey,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        },
+        data: []
+
+    })
+        .then(function (response) {
+
+            if (response.status === 200) {
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:4000/setcookie',
+                    headers: {
+                        "Refersion-Public-Key": req.body.pubKey,
+                        "Refersion-Secret-Key": req.body.secKey,
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    data: {pubKeyCookie : req.body.pubKey}
+
+                })
+                    .then(function (response) {
+                        console.log(response)
+                })
+                    .catch(function (error) {
+                    console.log(error);
+                    // console.log(error);
+                });
+            }
+
+            //console.log(response.statusText);
+            //console.log("Trying to set cookie.")
+            //res.cookie("pubKey",req.body.pubKey);
+            //res.send('Cookie have been saved successfully');
+
+        })
+        .catch(function (error) {
+            console.log(error);
+            // console.log(error);
+        });
     res.cookie(`pubKey`,`this is a pub key`);
     res.send('Cookie has been saved successfully');
     //res.send(response.statusText);
 
 })
 
-// app.get('/setcookie', (req, res) => {
-//     res.cookie(`Cookie token name`,`encrypted cookie string Value`);
-//     res.send('Cookie have been saved successfully');
-// });
+app.get('/setcookie', (req, res) => {
+    res.cookie(`Cookie token name`,req.body.pubKey);
+    res.send('Cookie have been saved successfully');
+});
 
 
 // Error Handling
