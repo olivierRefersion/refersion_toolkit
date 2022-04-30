@@ -1,5 +1,4 @@
 const express = require("express");
-const cookieParser = require('cookie-parser')
 const cors = require("cors");
 const axios = require("axios");
 const app = express();
@@ -16,8 +15,7 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use('/api', apiRoute);
-app.use(cookieParser());
+// app.use('/api', apiRoute);
 
 // Middleware to parse API Keys from frontend "Authentication" header
 const parseAuthHeader = (req, res, next) => {
@@ -34,6 +32,7 @@ const parseAuthHeader = (req, res, next) => {
 
 // TODO: Remove if not needed
 // app.use('/api', apiRoute); 
+// app.use(cookieParser());
 
 /*
  * Include functions for each route
@@ -90,6 +89,6 @@ const server = app.listen(port, () => {
 process.on('SIGTERM', () => {
     debug('SIGTERM signal received: closing HTTP server')
     server.close(() => {
-      debug('HTTP server closed')
+        debug('HTTP server closed')
     })
-  })
+})
