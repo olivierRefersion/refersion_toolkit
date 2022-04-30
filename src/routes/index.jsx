@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Index() {
 
-    const homepageTitleMap = Object.keys(titleMap).filter(entry => entry !== '/');
+    const homepageTitleMap = Object.keys(titleMap).filter(entry => !entry.includes('results') && entry !== '/');
 
     return (
         <main>
