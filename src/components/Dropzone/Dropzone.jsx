@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Dropzone.css';
 import { Icon } from '..';
 
@@ -49,6 +49,15 @@ export const Dropzone = (props) => {
         setText(e.dataTransfer.files[0].name)
     };
 
+    useEffect(()=>{
+        window.addEventListener("resetDropzone", () => {
+            document.getElementById("dropzone-input").value = '';
+            setIsDropActive(false)
+            setIsActive(false)
+            setText('Drag & drop your file here or click here to upload one.')
+          });
+    }, [])
+
     return (
         <div
             className={[active, highlighted, "drag-area"].join(' ').trim()}
@@ -64,7 +73,9 @@ export const Dropzone = (props) => {
                 ref={uploadInputField}
                 type="file"
                 accept="text/csv"
-                hidden />
+                id="dropzone-input"
+                hidden 
+                />
         </div>
     )
 }

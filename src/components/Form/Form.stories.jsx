@@ -2,7 +2,7 @@ import { Form } from './Form';
 import { Button } from '../Button/Button';
 
 export default {
-    title: 'Components/Form',
+    title: 'components/Form',
     component: Form,
     decorators: [
         (Story) => (

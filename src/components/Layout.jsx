@@ -7,7 +7,10 @@ export default function Layout() {
     // Handles toggling the auth modal visibility
     const [modalVisibility, setModalVisibility] = useState(false);
     const toggleModal = () => setModalVisibility(!modalVisibility);
-    const closeModal = () => setModalVisibility(false);
+    const closeModal = () => {
+        setModalVisibility(false);
+        window.dispatchEvent(new CustomEvent("modalClosed"));
+    }
     const toggleModalClassName = modalVisibility ? "show" : "hide";
 
     // Temporary until some auth logic is in place

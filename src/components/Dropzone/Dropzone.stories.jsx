@@ -3,7 +3,7 @@ import { Dropzone } from './Dropzone';
 import { Icon } from '../.';
 
 export default {
-    title: 'Components/Dropzone',
+    title: 'components/Dropzone',
     component: Dropzone,
     decorators: [
         (Story) => (
