@@ -12,8 +12,8 @@ const sendmanualorders = (req, res) => {
             method: 'post',
             url: 'https://www.rfsndev.com/api/manual_credit_order_id',
             headers: {
-                "Refersion-Public-Key": "pub_dbc37e60b31cdaa21e11",
-                "Refersion-Secret-Key": "sec_76f6cb125e64c4ec22e5",
+                "Refersion-Public-Key": req.headers["public-key"],
+                "Refersion-Secret-Key": req.headers["secret-key"],
                 "Content-Type": "application/json"
             },
             data: {

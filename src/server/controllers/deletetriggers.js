@@ -14,8 +14,8 @@ const deletetriggers = (req, res) => {
             method: 'post',
             url: 'https://www.rfsndev.com/api/delete_affiliate_trigger',
             headers: {
-                "Refersion-Public-Key": req.body.pubKey,
-                "Refersion-Secret-Key": req.body.secKey,
+                "Refersion-Public-Key": req.headers["public-key"],
+                "Refersion-Secret-Key": req.headers["secret-key"],
                 "Content-Type": "application/json",
             },
             data: {

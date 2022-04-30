@@ -21,8 +21,8 @@ const editaffiliates = (req, res) => {
             method: 'post',
             url: 'https://www.rfsndev.com/api/edit_affiliate',
             headers: {
-                "Refersion-Public-Key": "pub_0e2f3f67eaacbb4f5f65",
-                "Refersion-Secret-Key": "sec_0f9b8df9a51d27f551d1",
+                "Refersion-Public-Key": req.headers["public-key"],
+                "Refersion-Secret-Key": req.headers["secret-key"],
                 "Content-Type": "application/json",
             },
             data: {
