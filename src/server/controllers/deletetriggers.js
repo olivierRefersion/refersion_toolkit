@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const deletetriggers = (req, res) => {
 
     console.log(req.body.jsonObj);

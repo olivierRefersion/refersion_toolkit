@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const authenticate = (req, res) => {
 
     // Leverage axios to send the keys back to Refersion's check_account endpoint

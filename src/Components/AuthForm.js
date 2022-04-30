@@ -25,6 +25,12 @@ export const AuthForm = () => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 
+  const loginUser = () => {
+    const obfuscatedPubKey = state.pubKey.replace(/(pub_).*(\w{4})/g, "$1****************$2")
+    authContext.setUser(obfuscatedPubKey)
+    authContext.setAuthenticated(true)
+  }
+
   const handleSubmit = event => {
 
     event.preventDefault();
@@ -44,17 +50,13 @@ export const AuthForm = () => {
           sessionStorage.setItem('__auth', btoa(JSON.stringify(state)));
 
           setStatus({ success: 'true', message: 'Success! your keys have been authenticated.' })
-          authContext.setAuthenticated(true)
-          authContext.setUser = state.pubKey;
+          loginUser()
           document.getElementById('auth-form').reset();
 
           setTimeout(() => {
             document.getElementById('close').click()
           }, 2000)
-
-            .catch(() => {
-              setStatus({ success: 'false', message: 'Sorry, there was an issue completing your request. Try again later' })
-            })
+           
         } else {
           setStatus({ success: 'false', message: res.data.message })
         }

@@ -1,5 +1,6 @@
-const editaffiliates = (req, res) => {
+const axios = require("axios");
 
+const editaffiliates = (req, res) => {
 
     //Take the json object from the frontend request and loop through it
     for (let i = 0; i < jsonObj.length; i++) {
