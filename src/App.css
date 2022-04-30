@@ -28,27 +28,33 @@
 h1 {
   font-size: 2rem;
 }
+
 h2 {
   font-size: 1.6rem;
 }
+
 h3 {
   font-size: 1.4rem;
 }
+
 h4 {
   font-size: 1.2rem;
 }
+
 h5 {
   font-size: 1rem;
   font-weight: bold;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
   font-size: 12pt;
   color: var(--rfsn-dark-blue);
 }
+
 blockquote.info span.material-icons-outlined {
   color: var(--rfsn-blue);
   margin-right: 10px;
@@ -67,4 +73,86 @@ a {
 
 main {
   padding: 20px 0;
+}
+
+.home-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 20px
+}
+
+.home-grid a {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 6px;
+  color: var(--rfsn-dark-blue);
+}
+
+.home-grid a:hover {
+  box-shadow: 0 0 10px #00000017;
+  border-color: var(--rfsn-green);
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.notFound .container {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.notFound h1 {
+  font-size: 12rem;
+  letter-spacing: 10px;
+}
+
+.muted {
+  color: #808080;
+}
+
+.home-grid h4::after {
+  background: var(--rfsn-green);
+  height: 3px;
+  display: block;
+  bottom: -15px;
+  left: 0;
+  width: 3ch;
+  position: absolute;
+  content: "";
+}
+
+.home-grid h4 {
+  position: relative;
+  margin: 10px 0 30px;
+}
+
+.home-grid a:hover h4::after {
+  background: var(--rfsn-dark-blue);
+}
+
+aside ul li a:hover span:not(span.material-icons-outlined) {
+  color: var(--rfsn-green);
+}
+
+aside ul li a:hover span.material-icons-outlined {
+  background: var(--rfsn-green);
+  color: #fff;
+}
+
+aside ul li a.active span:not(span.material-icons-outlined) {
+  color: var(--rfsn-green);
+}
+
+aside ul li a.active span.material-icons-outlined {
+  background: var(--rfsn-green);
+  color: #fff;
 }

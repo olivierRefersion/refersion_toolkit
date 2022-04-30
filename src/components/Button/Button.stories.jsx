@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from './Button';
 
 export default {
-  title: 'Components/Buttons',
+  title: 'components/Buttons',
   component: Button,
   decorators: [
     (Story) => (

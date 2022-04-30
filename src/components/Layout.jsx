@@ -7,7 +7,10 @@ export default function Layout() {
     // Handles toggling the auth modal visibility
     const [modalVisibility, setModalVisibility] = useState(false);
     const toggleModal = () => setModalVisibility(!modalVisibility);
-    const closeModal = () => setModalVisibility(false);
+    const closeModal = () => {
+        setModalVisibility(false);
+        window.dispatchEvent(new CustomEvent("modalClosed"));
+    }
     const toggleModalClassName = modalVisibility ? "show" : "hide";
 
     // Temporary until some auth logic is in place
@@ -17,14 +20,16 @@ export default function Layout() {
 
     return (
         <>
+            <SideNav />
+            <section>
             <Header
                 title={titleMap[location.pathname].title}
                 icon={titleMap[location.pathname].icon}
                 loggedIn={loggedIn}
                 toggleModal={toggleModal}
             />
-            <SideNav />
             <Outlet />
+            </section>
             <Modal className={toggleModalClassName} close={closeModal} title='Modal'>
                 <AuthForm />
             </Modal>

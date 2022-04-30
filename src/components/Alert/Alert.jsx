@@ -6,7 +6,7 @@ import { Icon } from '../Icon/Icon';
 /**
  * Primary UI component for putting out important messages
  */
-export const Alert = ({ type, children, icon, ...props }) => {
+export const Alert = ({ type, children, ...props }) => {
   const iconMap = {
     default: '',
     info: 'info',
