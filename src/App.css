@@ -156,3 +156,20 @@ aside ul li a.active span.material-icons-outlined {
   background: var(--rfsn-green);
   color: #fff;
 }
+
+th {background: var(--rfsn-dark-blue);color: #fff;padding: 10px;text-align: left;}
+
+table {border-collapse: collapse;border: 1px solid;}
+
+td {padding: 10px;}
+
+tr:nth-child(even) {background: #f2f2f2;}
+
+
+h2.results {
+  margin: 20px 0;
+}
+
+table.results-table {
+  margin-bottom: 40px;
+}
