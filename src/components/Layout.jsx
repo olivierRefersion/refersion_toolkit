@@ -13,8 +13,7 @@ export default function Layout() {
     }
     const toggleModalClassName = modalVisibility ? "show" : "hide";
 
-    // Temporary until some auth logic is in place
-    let loggedIn = localStorage.getItem('loggedin') !== null ? localStorage.getItem('loggedin') : false;
+    let loggedIn = sessionStorage.getItem('__auth') !== null ? true : false;
 
     let location = useLocation();
 
@@ -27,6 +26,7 @@ export default function Layout() {
                 icon={titleMap[location.pathname].icon}
                 loggedIn={loggedIn}
                 toggleModal={toggleModal}
+                setModalVisibility={setModalVisibility}
             />
             <Outlet />
             </section>

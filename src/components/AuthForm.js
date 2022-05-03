@@ -25,7 +25,7 @@ export const AuthForm = () => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
 
-  const loginUser = () => {
+  const newLoginUser = () => {
     const obfuscatedPubKey = state.pubKey.replace(/(pub_).*(\w{4})/g, "$1****************$2")
     authContext.setUser(obfuscatedPubKey)
     authContext.setAuthenticated(true)
@@ -47,10 +47,11 @@ export const AuthForm = () => {
         if (res.data.status === 'success') {
 
           // If submitted keys are valid then add to session storage.
-          sessionStorage.setItem('__auth', btoa(JSON.stringify(state)));
+          const authObj = {...state, time: new Date().getTime()};
+          sessionStorage.setItem('__auth', btoa(JSON.stringify(authObj)));
 
           setStatus({ success: 'true', message: 'Success! your keys have been authenticated.' })
-          loginUser()
+          newLoginUser()
           document.getElementById('auth-form').reset();
 
           setTimeout(() => {
@@ -69,16 +70,6 @@ export const AuthForm = () => {
   }
 
   useEffect(() => {
-    // Handles updating session storage scross tab updates
-    window.addEventListener('storage', (event) => {
-      if (event.storageArea === 'sessionStorage') {
-        if (sessionStorage.getItem('__auth') === null) {
-          sessionStorage.setItem('__auth', event.newValue)
-        } else {
-          sessionStorage.removeItem('__auth')
-        }
-      }
-    })
     // Clears out API keys if the modal is simply closed
     window.addEventListener("modalClosed", () => {
       document.getElementById('auth-form').reset();

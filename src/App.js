@@ -25,14 +25,6 @@ export default function App() {
     if(sessionStorage.getItem('__auth') !== null) {
       loginUser()
     }
-    window.addEventListener('storage', (event) => {
-      if (sessionStorage.getItem('__auth') === null) {
-        sessionStorage.setItem('__auth', event.newValue)
-        loginUser()
-      } else {
-        sessionStorage.removeItem('__auth')
-      }
-    })
   },[])
 
   return (

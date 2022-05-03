@@ -10,6 +10,7 @@ export { AuthForm } from './AuthForm.js';
 export { default as UploadForm } from './UploadForm.js';
 export { Tooltip } from './Tooltip/Tooltip';
 export { default as Results } from './Results';
+export { Dropmenu } from './Dropmenu/Dropmenu'
 
 export const titleMap = {
     "/": {
