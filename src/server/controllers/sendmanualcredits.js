@@ -1,7 +1,10 @@
 const axios = require("axios");
 
-const sendmanualcredits = (req, res) => {
-
+const sendmanualcredits = async (req, res) => {
+    console.log("At the manual credit endpoint");
+    let successArray =[]
+    let failedCount = 0;
+    let successCount = 0;
     //Take the json object from the frontend request and loop through it
     for (let i = 0; i < req.body.jsonObj.length; i++) {
 
@@ -12,9 +15,9 @@ const sendmanualcredits = (req, res) => {
         let currency = req.body.jsonObj[i].currency;
         let notes = req.body.jsonObj[i].notes;
 
-        axios({
+        await axios({
             method: 'post',
-            url: 'https://api.rfsndev.com/v2/conversion/manual_credit',
+            url: 'https://api.refersion.com/v2/conversion/manual_credit',
             headers: {
                 "Refersion-Public-Key": req.headers["public-key"],
                 "Refersion-Secret-Key": req.headers["secret-key"],
@@ -28,25 +31,26 @@ const sendmanualcredits = (req, res) => {
                 "currency": currency,
                 "notes": notes
             }
-        })
+            })
             .then(function (response) {
 
                 //For reference in sending back to the front end results tables
-                console.log("Response status is" + response.status);
-                console.log("Response status text is" + response.statusText);
-                console.log("Response conversion ID is" + response.data.conversion_id);
-                console.log("Response Affiliate ID" + response.config.data.id);
-                console.log("Response Affiliate ID" + response.config.data.commmission);
-                console.log("Response Affiliate ID" + response.config.data.currency);
+                successArray.push(`Commission of ${commission} ${currency} for affiliate ID ${id} is created. Conversion ID is ${response.data.conversion_id}`);
+                successCount ++;
+                console.log(successCount);
+
+                // res.send(successCount);
             })
             .catch(function (error) {
-                console.log(error);
-                // console.log(error);
+                console.log(error.response.data.error);
+                failedCount ++;
             });
 
+        }
+          //console.log("Done");
+          res.write(successArray);
+          res.write(failedCount);
+          res.end;
     }
-    res.json();
-
-}
 
 module.exports.sendmanualcredits = sendmanualcredits;
