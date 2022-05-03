@@ -1,13 +1,16 @@
 const axios = require("axios");
 
 const sendmanualorders = async (req, res) => {
-    let successObject = {
-        successCount: 0,
-        successInfoArray: []
-    }
-    let failedObject = {
-        failedCount: 0,
-        failedInfoArray: []
+    //Initialize variables for responses.
+    let responseObject = {
+        successObject: {
+            successCount: 0,
+            successInfoArray: []
+        },
+        failedObject: {
+            failedCount: 0,
+            failedInfoArray: []
+        }
     }
     //Take the json object from the frontend request and loop through it
     for (let i = 0; i < req.body.jsonObj.length; i++) {
@@ -33,16 +36,16 @@ const sendmanualorders = async (req, res) => {
             .then(function (response) {
                 // handle success
                 console.log(response.data);
+                responseObject.successObject.successInfoArray.push(response.data);
+                responseObject.successObject.successCount ++;
             })
             .catch(function (error) {
                 console.log(`Order ID ${order_id} did not process due to ${error.response.data.error}`)
-                failedObject.failedInfoArray.push(`Order ID ${order_id} did not process due to ${error.response.data.error}`)
-                failedObject.failedCount ++;
+                responseObject.failedObject.failedInfoArray.push(`Order ID ${order_id} did not process due to ${error.response.data.error}`)
+                responseObject.failedObject.failedCount ++;
             });
         }
-        // res.send(failedCount);
-        console.log(failedObject.failedCount);
-        res.send(failedObject);
-}       //TODO: Create one object for both success and failed. Add those together as one object to get sent to the frontend
+        res.send(responseObject);
+}
 
 module.exports.sendmanualorders = sendmanualorders;
