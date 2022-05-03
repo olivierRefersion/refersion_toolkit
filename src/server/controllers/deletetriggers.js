@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const deletetriggers = (req, res) => {
+const deletetriggers = async (req, res) => {
 
     console.log(req.body.jsonObj);
     console.log(req.body.pubKey);
@@ -10,7 +10,7 @@ const deletetriggers = (req, res) => {
         let affiliate_id = req.body.jsonObj[i].affiliate_id;
         let trigger = req.body.jsonObj[i].trigger;
         let type = req.body.jsonObj[i].type;
-        axios({
+        await axios({
             method: 'post',
             url: 'https://www.rfsndev.com/api/delete_affiliate_trigger',
             headers: {
@@ -26,18 +26,18 @@ const deletetriggers = (req, res) => {
         })
             .then(function (response) {
                 // handle success
-                console.log(response.statusText);
+                //TODO: Check if the following object is correct
+                console.log(response.data);
             })
             .catch(function (error) {
 
-                console.log(error);
-                // console.log(error);
+                console.log(error.response.data.error);
             });
 
 
 
     }
-    res.json();
+        res.json();
 
 }
 

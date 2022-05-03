@@ -1,10 +1,9 @@
 const axios = require("axios");
 
 const sendmanualcredits = async (req, res) => {
-    console.log("At the manual credit endpoint");
+    //Initialize variables for responses.
     let successArray =[]
     let failedCount = 0;
-    let successCount = 0;
     //Take the json object from the frontend request and loop through it
     for (let i = 0; i < req.body.jsonObj.length; i++) {
 
@@ -36,21 +35,19 @@ const sendmanualcredits = async (req, res) => {
 
                 //For reference in sending back to the front end results tables
                 successArray.push(`Commission of ${commission} ${currency} for affiliate ID ${id} is created. Conversion ID is ${response.data.conversion_id}`);
-                successCount ++;
-                console.log(successCount);
+
 
                 // res.send(successCount);
             })
             .catch(function (error) {
                 console.log(error.response.data.error);
                 failedCount ++;
+                //TODO: Create logic here for  sending the errors
             });
 
         }
           //console.log("Done");
-          res.write(successArray);
-          res.write(failedCount);
-          res.end;
+          res.send(successArray)
     }
 
 module.exports.sendmanualcredits = sendmanualcredits;
