@@ -41,14 +41,31 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Index />} />
-            <Route exact path="/bulk-manual-commission-credits" element={<UploadForm data={titleMap['/bulk-manual-commission-credits']} />} />
-            <Route exact path="/bulk-manual-order-credits" element={<UploadForm data={titleMap['/bulk-manual-order-credits']} />} />
-            <Route exact path="/bulk-edit-affiliates" element={<UploadForm data={titleMap['/bulk-edit-affiliates']} />} />
-            <Route exact path="/bulk-delete-triggers" element={<UploadForm data={titleMap['/bulk-delete-triggers']} />} />
+            <Route exact path="/bulk-manual-commission-credits" >
+              <Route index element={<UploadForm data={titleMap['/bulk-manual-commission-credits']} />} />
+              <Route path="results" element={<Results />} />
+            </Route>
+
+            <Route exact path="/bulk-manual-order-credits" >
+              <Route index element={<UploadForm data={titleMap['/bulk-manual-order-credits']} />} />
+              <Route path="results" element={<Results />} />
+            </Route>
+
+            <Route exact path="/bulk-edit-affiliates"  >
+              <Route index element={<UploadForm data={titleMap['/bulk-edit-affiliates']} />} />
+              <Route path="results" element={<Results />} />
+            </Route>
+
+            <Route exact path="/bulk-delete-triggers"  >
+              <Route index element={<UploadForm data={titleMap['/bulk-delete-triggers']} />} />
+              <Route path="results" element={<Results />} />
+            </Route>
+
             <Route exact path="/bulk-upload-orders">
               <Route index element={<UploadForm data={titleMap['/bulk-upload-orders']} />} />
               <Route path="results" element={<Results />} />
             </Route>
+
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -30,10 +30,6 @@ const parseAuthHeader = (req, res, next) => {
     next()
 }
 
-// TODO: Remove if not needed
-// app.use('/api', apiRoute); 
-// app.use(cookieParser());
-
 /*
  * Include functions for each route
  */
@@ -71,10 +67,6 @@ app.post("/uploadorders", parseAuthHeader, uploadorders)
  * Error Handling
  */
 
-// TODO: What is create error? it doesn't seem to be defined so it throws an error
-app.use((req, res, next) => {
-    next(createError(404));
-});
 app.use(function (err, req, res, next) {
     console.error(err.message);
     if (!err.statusCode) err.statusCode = 500;

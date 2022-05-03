@@ -41,8 +41,6 @@ const sendmanualcredits = async (req, res) => {
             }
             })
             .then(function (response) {
-
-                //For reference in sending back to the front end results tables
                 responseObject.successObject.successInfoArray.push(`Commission of ${commission} ${currency} for affiliate ID ${id} is created. Conversion ID is ${response.data.conversion_id}`);
                 responseObject.successObject.successCount ++;
             })
@@ -52,10 +50,8 @@ const sendmanualcredits = async (req, res) => {
                 responseObject.failedObject.failedCount ++;
 
             });
-
         }
-
-          res.send(responseObject)
+    res.send(responseObject)
     }
 
 module.exports.sendmanualcredits = sendmanualcredits;

@@ -50,7 +50,7 @@ export default function UploadForm(props) {
                                     state: {
                                         prevpage: location.pathname,
                                         data: {
-                                            id: 7, color: 'green'
+                                            responseObject: res.data
                                         }
                                     }
                                 });
