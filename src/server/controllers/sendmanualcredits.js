@@ -1,20 +1,31 @@
 const axios = require("axios");
 
-const sendmanualcredits = (req, res) => {
+const sendmanualcredits = async (req, res) => {
+    //Initialize variables for responses.
+    let responseObject = {
+        successObject: {
+            successCount: 0,
+            successInfoArray: []
+        },
+        failedObject: {
+            failedCount: 0,
+            failedInfoArray: []
+        }
+    }
 
     //Take the json object from the frontend request and loop through it
     for (let i = 0; i < req.body.jsonObj.length; i++) {
 
         //Set new variables for the properties on each object to be passed into the data for the Axios call
-        let id = req.body.jsonObj[i].id;
-        let commission = req.body.jsonObj[i].commission;
-        let status = req.body.jsonObj[i].status;
-        let currency = req.body.jsonObj[i].currency;
-        let notes = req.body.jsonObj[i].notes;
+        const id = req.body.jsonObj[i].id;
+        const commission = req.body.jsonObj[i].commission;
+        const status = req.body.jsonObj[i].status;
+        const currency = req.body.jsonObj[i].currency;
+        const notes = req.body.jsonObj[i].notes;
 
-        axios({
+        await axios({
             method: 'post',
-            url: 'https://api.rfsndev.com/v2/conversion/manual_credit',
+            url: 'https://api.refersion.com/v2/conversion/manual_credit',
             headers: {
                 "Refersion-Public-Key": req.headers["public-key"],
                 "Refersion-Secret-Key": req.headers["secret-key"],
@@ -28,25 +39,19 @@ const sendmanualcredits = (req, res) => {
                 "currency": currency,
                 "notes": notes
             }
-        })
+            })
             .then(function (response) {
-
-                //For reference in sending back to the front end results tables
-                console.log("Response status is" + response.status);
-                console.log("Response status text is" + response.statusText);
-                console.log("Response conversion ID is" + response.data.conversion_id);
-                console.log("Response Affiliate ID" + response.config.data.id);
-                console.log("Response Affiliate ID" + response.config.data.commmission);
-                console.log("Response Affiliate ID" + response.config.data.currency);
+                responseObject.successObject.successInfoArray.push(`Commission of ${commission} ${currency} for affiliate ID ${id} is created. Conversion ID is ${response.data.conversion_id}`);
+                responseObject.successObject.successCount ++;
             })
             .catch(function (error) {
-                console.log(error);
-                // console.log(error);
+                console.log(error.response.data.error);
+                responseObject.failedObject.failedInfoArray.push(`Commission of ${commission} ${currency} for affiliate ID ${id} has failed due  to: ${error.response.data.error}`)
+                responseObject.failedObject.failedCount ++;
+
             });
-
+        }
+    res.send(responseObject)
     }
-    res.json();
-
-}
 
 module.exports.sendmanualcredits = sendmanualcredits;

@@ -5,7 +5,7 @@ const authenticate = (req, res) => {
     // Leverage axios to send the keys back to Refersion's check_account endpoint
     axios({
         method: 'post',
-        url: 'https://api.rfsndev.com/v2/affiliate/list', // check_account not working on dev for some reason
+        url: 'https://www.refersion.com/api/check_account', // check_account not working on dev for some reason
         headers: {
             "Refersion-Public-Key": req.body.pubKey,
             "Refersion-Secret-Key": req.body.secKey,

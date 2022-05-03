@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const editaffiliates = (req, res) => {
+const editaffiliates = async (req, res) => {
 
     //Take the json object from the frontend request and loop through it
     for (let i = 0; i < jsonObj.length; i++) {
@@ -17,7 +17,7 @@ const editaffiliates = (req, res) => {
         let zip = jsonObj[i].zip;
         let country = jsonObj[i].country;
         let phone = jsonObj[i].phone;
-        axios({
+        await axios({
             method: 'post',
             url: 'https://www.rfsndev.com/api/edit_affiliate',
             headers: {
