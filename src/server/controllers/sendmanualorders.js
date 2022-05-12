@@ -20,7 +20,7 @@ const sendmanualorders = async (req, res) => {
         let notes = req.body.jsonObj[i].notes;
         await axios({
             method: 'post',
-            url: 'https://www.rfsndev.com/api/manual_credit_order_id',
+            url: process.env.DEV + '/api/manual_credit_order_id',
             headers: {
                 "Refersion-Public-Key": req.headers["public-key"],
                 "Refersion-Secret-Key": req.headers["secret-key"],

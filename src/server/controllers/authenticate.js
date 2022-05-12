@@ -1,11 +1,14 @@
 const axios = require("axios");
+const dotenv = require("dotenv")
+require('dotenv').config();
+
 
 const authenticate = (req, res) => {
 
     // Leverage axios to send the keys back to Refersion's check_account endpoint
     axios({
         method: 'post',
-        url: 'https://www.refersion.com/api/check_account', // check_account not working on dev for some reason
+        url: process.env.PROD+'api/check_account', // check_account not working on dev for some reason
         headers: {
             "Refersion-Public-Key": req.body.pubKey,
             "Refersion-Secret-Key": req.body.secKey,
@@ -21,6 +24,7 @@ const authenticate = (req, res) => {
             } else {
                 res.json({ status: 'error', message: response.statusText })
             }
+            //console.log(__dirname + '../../../.env');
         })
         .catch(function (error) {
             res.json({ status: 'error', message: error.response.data.error });
