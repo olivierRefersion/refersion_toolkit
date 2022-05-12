@@ -1,4 +1,5 @@
 const axios = require("axios");
+require('dotenv').config();
 
 const sendmanualcredits = async (req, res) => {
     //Initialize variables for responses.
@@ -25,7 +26,7 @@ const sendmanualcredits = async (req, res) => {
 
         await axios({
             method: 'post',
-            url: 'https://api.refersion.com/v2/conversion/manual_credit',
+            url: process.env.DEV + '/api/manual_credit_order_id',
             headers: {
                 "Refersion-Public-Key": req.headers["public-key"],
                 "Refersion-Secret-Key": req.headers["secret-key"],

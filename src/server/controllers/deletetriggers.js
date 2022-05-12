@@ -1,4 +1,5 @@
 const axios = require("axios");
+require('dotenv').config();
 
 const deletetriggers = async (req, res) => {
 
@@ -12,7 +13,7 @@ const deletetriggers = async (req, res) => {
         let type = req.body.jsonObj[i].type;
         await axios({
             method: 'post',
-            url: 'https://www.rfsndev.com/api/delete_affiliate_trigger',
+            url: process.env.DEV + '/api/delete_affiliate_trigger',
             headers: {
                 "Refersion-Public-Key": req.headers["public-key"],
                 "Refersion-Secret-Key": req.headers["secret-key"],

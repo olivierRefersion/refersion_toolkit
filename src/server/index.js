@@ -2,12 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const app = express();
+require('dotenv').config()
 const port = process.env.PORT || 4000;
-
-// TODO: Remove if not needed
-// const cookieParser = require('cookie-parser')
-// const apiRoute = require('../server/routes/apiRoutes');
-// let bodyParser = require('body-parser');
 
 /*
  * Middleware

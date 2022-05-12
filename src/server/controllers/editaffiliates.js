@@ -1,7 +1,8 @@
 const axios = require("axios");
+require('dotenv').config();
 
 const editaffiliates = async (req, res) => {
-
+    //TODO: Change this to make this entire body dynamic; save for the affiliate ID.
     //Take the json object from the frontend request and loop through it
     for (let i = 0; i < jsonObj.length; i++) {
         let id = jsonObj[i].id;
@@ -19,7 +20,7 @@ const editaffiliates = async (req, res) => {
         let phone = jsonObj[i].phone;
         await axios({
             method: 'post',
-            url: 'https://www.rfsndev.com/api/edit_affiliate',
+            url: process.env.DEV + '/api/edit_affiliate',
             headers: {
                 "Refersion-Public-Key": req.headers["public-key"],
                 "Refersion-Secret-Key": req.headers["secret-key"],
