@@ -8,9 +8,10 @@ export default function Results() {
     const goback = () => {
         navigate(state.prevpage)
     }
-    //console.log(state.data.responseObject.successObject.successInfoArray);
+
     const failedInfo = state.data.responseObject.failedObject.failedInfoArray;
     const successInfo = state.data.responseObject.successObject.successInfoArray;
+    
     return (
         <main>
             <div className="container">

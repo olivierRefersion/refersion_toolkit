@@ -30,7 +30,7 @@ export default function UploadForm(props) {
                 csvtojson().fromString(result).then((jsonObj) => {
                     console.log(jsonObj)
 
-                    // Send converted JSON from CSV to the appropiate backend endpoint based on "props.data.endpoint" passed down from App.js
+                    // Send converted JSON from CSV to the appropriate backend endpoint based on "props.data.endpoint" passed down from App.js
                     axios.post(props.data.endpoint,
                         { jsonObj },
                         {
@@ -50,7 +50,7 @@ export default function UploadForm(props) {
                                     state: {
                                         prevpage: location.pathname,
                                         data: {
-                                            id: 7, color: 'green'
+                                            responseObject: res.data
                                         }
                                     }
                                 });
