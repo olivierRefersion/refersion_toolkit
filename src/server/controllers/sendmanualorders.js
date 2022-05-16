@@ -35,12 +35,11 @@ const sendmanualorders = async (req, res) => {
         })
             .then(function (response) {
                 // handle success
-                console.log(response.data);
+               // console.log(response.data);
                 responseObject.successObject.successInfoArray.push(response.data);
                 responseObject.successObject.successCount ++;
             })
             .catch(function (error) {
-                console.log(`Order ID ${order_id} did not process due to ${error.response.data.error}`)
                 responseObject.failedObject.failedInfoArray.push(`Order ID ${order_id} did not process due to ${error.response.data.error}`)
                 responseObject.failedObject.failedCount ++;
             });

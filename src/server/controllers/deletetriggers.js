@@ -27,7 +27,7 @@ const deletetriggers = async (req, res) => {
         })
             .then(function (response) {
                 // handle success
-                //TODO: Check if the following object is correct
+                //TODO: Check if the following object is correct then build out the response object to send back from the request.
                 console.log(response.data);
             })
             .catch(function (error) {
