@@ -2,60 +2,48 @@ const axios = require("axios");
 require('dotenv').config();
 
 const editaffiliates = async (req, res) => {
-    //TODO: Change this to make this entire body dynamic; save for the affiliate ID.
+    //Initialize variables for responses.
+    let responseObject = {
+        successObject: {
+            successCount: 0,
+            successInfoArray: []
+        },
+        failedObject: {
+            failedCount: 0,
+            failedInfoArray: []
+        }
+    }
+
     //Take the json object from the frontend request and loop through it
-    for (let i = 0; i < jsonObj.length; i++) {
-        let id = jsonObj[i].id;
-        let offer = jsonObj[i].offer;
-        let first_name = jsonObj[i].first_name;
-        let last_name = jsonObj[i].last_name;
-        let email = jsonObj[i].email;
-        let company = jsonObj[i].company;
-        let address1 = jsonObj[i].address1;
-        let address2 = jsonObj[i].address2;
-        let city = jsonObj[i].city;
-        let state = jsonObj[i].state;
-        let zip = jsonObj[i].zip;
-        let country = jsonObj[i].country;
-        let phone = jsonObj[i].phone;
+    console.log(req.body.jsonObj);
+    //TODO: Need to figure out a sort of validation for the custom field id keys since Refersion's API will delete those sent in with values that are empty strings.
+    for (let i = 0; i < req.body.jsonObj.length; i++) {
         await axios({
             method: 'post',
-            url: process.env.DEV + '/api/edit_affiliate',
+            url: process.env.PROD + '/api/edit_affiliate',
             headers: {
                 "Refersion-Public-Key": req.headers["public-key"],
                 "Refersion-Secret-Key": req.headers["secret-key"],
                 "Content-Type": "application/json",
             },
-            data: {
-                id,
-                offer,
-                first_name,
-                last_name,
-                email,
-                company,
-                address1,
-                address2,
-                city,
-                state,
-                zip,
-                country,
-                phone
-            }
+            data: req.body.jsonObj[i]
+
         })
             .then(function (response) {
                 // handle success
-                console.log(response.statusText);
+                //console.log(response.data);
+
+                responseObject.successObject.successInfoArray.push(`The edit for Affiliate ID: ${req.body.jsonObj[i].id} is a ${response.data.response}`);
+                responseObject.successObject.successCount ++;
             })
             .catch(function (error) {
+                //console.log(error.response.data.errors);
 
-                console.log(error);
-                // console.log(error);
+                responseObject.failedObject.failedInfoArray.push(`Error for ${req.body.jsonObj[i].id}: ${error.response.data.errors}`);
+                responseObject.failedObject.failedCount ++;
             });
-
-
-
     }
-    res.json();
+    res.send(responseObject);
 
 }
 
